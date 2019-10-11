@@ -1,0 +1,99 @@
+Generic Mouse Transgenic Facility such as commonly present in universities
+
+Business Process Model - "as is" 2019
+
+Personel:
+
+Unit leader - Responsible for decisions concerning the future of the unit and ultimately the communication with the researchers, particularly during project planning (at the beginning).
+		1. Managing the registration system
+		2. Planning the series (which project is done when)
+			a. Ordering the mice required for the project in a timely manner
+			b. Writing a weekly plan for all users to use as reference for the upcoming week.
+		3. Writing the bills after a project is completed.
+
+Injection Technician - Responsible for preparing embryos, injection/electroporation of the embryos, and embryo transfer.  Should enter relevent information into the system:  
+		1. Number of plug positive females used
+		2. Number of embryos collected
+		3. Number of embryos injected
+		4. Number of embryos transferred
+
+Molecular Technician - Responsible for preparing the "injection/electroporation mix" (this could also be provided by a researcher).  Responsible for genotyping service.
+		1. Calculate and prepare the injection list (excel sheet)
+		2. Update project information with regards to what exactly was injected (ie injection/electroporation mix)
+		3. Inform researchers when their samples are ready (e-mail)
+		4. Update databases with the biopsy information (currently: website, animal facility software and excel list)
+		5. Communicate with animal caretaker and vet services with regards to sending animals(e-mail and animal facility software)
+
+Cryopreservation Technician - Responsible for organising and carrying out all cryopreservation (freezing) projects for embryos and sperm, as well as organising imports and exports and maintaining an overview of the samples in the cryotank.
+		1. Communicate with researcher regarding the cryopreservation date and organising the mice for that date (Website, e-mail, animal facility software)
+		2. Organising the imports/exports (e-mail - this is a big area that requires improvement as communication is often unclear and the information not easily accessible)
+		3. Maintaining and updating the cryotank database (excel file)
+
+Animal Technician - Responsible for monitoring and caring for the mice.  Takes the samples which the researcher or molecular technician will analyse.
+		1. Updates lists (for births)
+		2. Maintains the animal information on the animal facility software
+		3. Informs technician if there is any problems with a mouse (abnormalities, sickness, death) (e-mail and animal facility software)
+		4. Sends the mice (upon request)
+
+Current Forms/Databases/Software (Processes):
+
+1. Website with information for researcher (static)
+2. A very basic site where researchers can enter information about their project - this software assigns a project number based on the type of project.
+3. Excel list with overview of what project will be done when - also a weekly plan for all involved to see the required work in the upcoming week.
+4. Excel worksheet to calculate the injection volumes required.
+5. Excel list for information on the series to track the operations and births.
+6. Excel list to inform researcher of animal numbers, gender, etc after birth - for analysis and to return the results
+7. Excel list of all of the above (#6) information - filled out with the information after the researchers have returned their list
+8. Excel list of frozen sperm and embryos stored in the tank
+9. Animal facility has a real software which allows users to view their animals virtually and send requests to their animal caretakers.
+
+
+Current Workflow for Standard Injection:
+
+01-> Researcher decides he/she wants a transgenic mouse 
+02-> Check website of facility and send a request 
+03-> Unit leader decides if project is feasible(doable), may meet the researcher and then have them register the project on website database 
+04-> Researcher fills out the database form (What gene, what mouse background, comments, etc) (Project officially starts once it is registered)
+05-> System assigns a project number based on the type of project (Decision is made here about who is responsible for the project - See below for Cryopreservation)
+06-> Unit Head or the Researcher order reagents
+07-> Molecular Tech. receives reagents
+08-> Unit Head plans (adds to excel list) and orders mice for the series (via Animal facility software)
+09-> Date of injection 	- Molecular Tech. prepares the injection/electroporation reagents (with help of worksheet)
+     or electroporation	- Injection Tech. prepares the embryos and does injection (records the number of mice used, embryos yielded, injected)
+			- Injection Tech. transfers the embryos (records the number of animals used and number of embryos injected)
+10-> 3-weeks later: Animal caretaker records the number of births (into Animal facility software and excel list)
+11-> 5-10 days later: Animal caretaker takes samples from the animals (enters into Animal facility software)
+12-> Molecular Tech receives the samples, creates the list for the researcher and e-mails the researcher that the samples are ready to be picked up
+13-> Researcher must analyze the samples, fill in the form he/she received and return to the Molecular Tech
+14-> Molecular Tech enters information into other lists and Animal facility site where he/she makes the request to send mice to researcher (or if the result was negative, then back to step #08
+15-> Animal caretaker sends the selected animals
+16-> Project is finished and a bill can be sent
+
+For Cryopreservation
+
+01-05-> Essentially the same (perhaps shorter)
+06->  Cryotechnician organizes the mice and plans the series
+07->  Cryotechnician carries out the series (must update the cryotank list)
+08->  Cryotechnician carries out a validation of the series to ensure it worked (if it fails, then another validation may be required or the project must be repeated)
+09->  Cryotechnician informs researcher that the project is finished
+10->  Project is finished and a bill can be sent 
+
+Current Problems:
+
+Use of things like Excel or Filemaker - had several databases, but no centralized system
+No visualization of process
+No automatic update to clients
+No automatic pricing and billing
+No automatic inventorization
+No central database for these infos
+
+
+Idea to digitalize - scan out system for cryotanks and TKS - inventory
+
+
+
+
+
+
+
+
