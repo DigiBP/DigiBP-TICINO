@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" id="Definitions_0xk3i6o" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="3.3.4">
+  <decision id="Decision_1ognlc7" name="Decision 1">
+    <decisionTable id="decisionTable_1">
+      <input id="input_1" label="Researcher Needs">
+        <inputExpression id="inputExpression_1" typeRef="string">
+          <text>researcherNeeds</text>
+        </inputExpression>
+      </input>
+      <output id="output_1" label="Project Type" name="projectType" typeRef="string">
+        <outputValues id="UnaryTests_0onofu9">
+          <text>"Blastocyst Injection","Zygote Electroporation","Pronuclear Injection","2-cell Injection","Sperm Cryopreservation","Embryo Cryopreservation","In Vitro Fertilitzation","Embryo Transfer"</text>
+        </outputValues>
+      </output>
+      <output id="OutputClause_0clstft" label="Person Responsible" name="person" typeRef="string">
+        <outputValues id="UnaryTests_1rtty86">
+          <text>"Molecular Technician","Injection Technician","Cryotechnician","Unit Leader"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_19fknxs">
+        <inputEntry id="UnaryTests_0hf70qa">
+          <text>"Transgenic"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ap54ie">
+          <text>"Pronuclear Injection"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14ywb3i">
+          <text>"Injection Technician"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_07ujecj">
+        <inputEntry id="UnaryTests_06upmvk">
+          <text>"Knock-out"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1fudo7j">
+          <text>"Zygote Electroporation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gvls0q">
+          <text>"Injection Technician"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09kxw3f">
+        <inputEntry id="UnaryTests_0hx80pb">
+          <text>"Small Knock-in"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1joqs0w">
+          <text>"Zygote Electroporation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0pm9ovd">
+          <text>"Injection Technician"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1pb6ed0">
+        <inputEntry id="UnaryTests_0g5a5a6">
+          <text>"Large Knock-in"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0om7kmh">
+          <text>"2-cell Injection"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xmo5rf">
+          <text>"Unit Leader"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0zuy61m">
+        <inputEntry id="UnaryTests_0ejnutp">
+          <text>"LoxP"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_132kvxp">
+          <text>"Zygote Electroporation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1joyfru">
+          <text>"Unit Leader"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_11ags19">
+        <inputEntry id="UnaryTests_06qb5ky">
+          <text>"Embryo Cryopreservation"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wbkowz">
+          <text>"Embryo Cryopreservation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vokrew">
+          <text>"Cryotechnician"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_15rftf8">
+        <inputEntry id="UnaryTests_19g91en">
+          <text>"Sperm Cryopreservation2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0x14zqg">
+          <text>"Sperm Cryopreservation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0s6zoru">
+          <text>"Cryotechnician"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1yf6xx3">
+        <inputEntry id="UnaryTests_0xmy6t6">
+          <text>"Rederivation"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1r8gn6t">
+          <text>"In Vitro Fertilitzation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_079lb9x">
+          <text>"Cryotechnician"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1gbcuye">
+        <inputEntry id="UnaryTests_1n2mvwg">
+          <text>"Embryo Import"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qc3dhr">
+          <text>"Embryo Transfer"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hd2o8p">
+          <text>"Injection Technician"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1frk99s">
+        <inputEntry id="UnaryTests_0cveqma">
+          <text>"ES cells"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wjt1w6">
+          <text>"Blastocyst Injection"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0p6t5oq">
+          <text>"Molecular Technician"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>
