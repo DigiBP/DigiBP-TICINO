@@ -90,6 +90,10 @@ No central database for these infos
 
 Idea to digitalize - scan out system for cryotanks and TKS - inventory
 
+Can automate the order of reagents
+Can automate the creation of the biopsy lists
+
+
 
 
 
