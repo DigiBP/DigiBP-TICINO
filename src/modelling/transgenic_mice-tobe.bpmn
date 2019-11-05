@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_0z420j8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.3.5">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_0z420j8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.4.1">
   <bpmn:collaboration id="Collaboration_148g16j">
     <bpmn:participant id="Participant_101iy09" name="Customer" />
     <bpmn:participant id="Participant_1dna8yn" name="Transgenic Facility" processRef="Process_0zbty9s" />
@@ -186,7 +186,7 @@
       <bpmn:incoming>SequenceFlow_1boluhs</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_04nhfk9</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:task id="Task_117wa3q" name="Meet Researcher">
+    <bpmn:task id="Task_117wa3q" name="Meet Customer">
       <bpmn:incoming>SequenceFlow_1pm9hgu</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_17zzcuu</bpmn:outgoing>
     </bpmn:task>
