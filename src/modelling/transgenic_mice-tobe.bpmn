@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_0z420j8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.4.1">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_0z420j8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.3.4">
   <bpmn:collaboration id="Collaboration_148g16j">
     <bpmn:participant id="Participant_101iy09" name="Customer" />
     <bpmn:participant id="Participant_1dna8yn" name="Transgenic Facility" processRef="Process_0zbty9s" />
@@ -18,14 +18,14 @@
       <bpmn:lane id="Lane_1qtbrxr" name="Animal Caretaker">
         <bpmn:flowNodeRef>Task_0re7pte</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_09mq293</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_0yzu7q9</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>EndEvent_03b6i1h</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_0yohom1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>ExclusiveGateway_15qw2e4</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>IntermediateThrowEvent_0ufqvqv</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>IntermediateThrowEvent_1wjkfhq</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>IntermediateThrowEvent_15yvtip</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_1ci8off</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_0yzu7q9</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>IntermediateThrowEvent_15yvtip</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_1ezsc47" name="Injection Technician">
         <bpmn:flowNodeRef>Task_1pywh3v</bpmn:flowNodeRef>
@@ -94,10 +94,6 @@
     <bpmn:sequenceFlow id="SequenceFlow_0k8qpv4" sourceRef="Task_0yohom1" targetRef="EndEvent_03b6i1h" />
     <bpmn:sequenceFlow id="SequenceFlow_1b4gtxh" name="Cryopreservation" sourceRef="ExclusiveGateway_0unitaq" targetRef="SubProcess_1i5zb43" />
     <bpmn:sequenceFlow id="SequenceFlow_1boluhs" sourceRef="SubProcess_1i5zb43" targetRef="ExclusiveGateway_0c7f63v" />
-    <bpmn:boundaryEvent id="IntermediateThrowEvent_15yvtip" name="5 Days" cancelActivity="false" attachedToRef="Task_0yzu7q9">
-      <bpmn:outgoing>SequenceFlow_1nabbut</bpmn:outgoing>
-      <bpmn:timerEventDefinition id="TimerEventDefinition_11l3x82" />
-    </bpmn:boundaryEvent>
     <bpmn:subProcess id="SubProcess_1i5zb43" name="Cryoperservation">
       <bpmn:incoming>SequenceFlow_1b4gtxh</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1boluhs</bpmn:outgoing>
@@ -285,9 +281,6 @@
     <bpmn:endEvent id="EndEvent_03b6i1h">
       <bpmn:incoming>SequenceFlow_0k8qpv4</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:task id="Task_0yzu7q9" name="Decide to take samples">
-      <bpmn:incoming>SequenceFlow_1yoyk3m</bpmn:incoming>
-    </bpmn:task>
     <bpmn:manualTask id="Task_09mq293" name="Take Samples (Toetips)">
       <bpmn:incoming>SequenceFlow_1nabbut</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_016guw3</bpmn:outgoing>
@@ -313,6 +306,13 @@
         <bpmn:targetRef>DataStoreReference_0ja58oi</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
     </bpmn:userTask>
+    <bpmn:businessRuleTask id="Task_0yzu7q9" name="Decide to take samples" camunda:decisionRef="Decision_1uxhbcq">
+      <bpmn:incoming>SequenceFlow_1yoyk3m</bpmn:incoming>
+    </bpmn:businessRuleTask>
+    <bpmn:boundaryEvent id="IntermediateThrowEvent_15yvtip" name="5 Days" cancelActivity="false" attachedToRef="Task_0yzu7q9">
+      <bpmn:outgoing>SequenceFlow_1nabbut</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_11l3x82" />
+    </bpmn:boundaryEvent>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_148g16j">
@@ -727,9 +727,6 @@
         <di:waypoint x="3540" y="1700" />
         <di:waypoint x="3540" y="705" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Task_0c5bnhg_di" bpmnElement="Task_0yzu7q9">
-        <dc:Bounds x="2700" y="1320" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ManualTask_1scvmqv_di" bpmnElement="Task_09mq293">
         <dc:Bounds x="2860" y="1390" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -825,6 +822,9 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="UserTask_12ln6lk_di" bpmnElement="Task_1ci8off">
         <dc:Bounds x="3000" y="1320" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BusinessRuleTask_0ohf1t6_di" bpmnElement="Task_0yzu7q9">
+        <dc:Bounds x="2700" y="1320" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
