@@ -29,6 +29,11 @@
           <text>"C57Bl/6j","FVB","Balb/c","other"</text>
         </inputValues>
       </input>
+      <input id="InputClause_00b0q7r">
+        <inputExpression id="LiteralExpression_08c1ifp" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
       <output id="output_1" label="Feasibility" name="Feasibility" typeRef="string">
         <outputValues id="UnaryTests_13n133g">
           <text>"Not Possible","Possible","Needs to be reviewed"</text>
@@ -44,6 +49,9 @@
         <inputEntry id="UnaryTests_0dnm4em">
           <text>"C57Bl/6j","FVB"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0vyskhx">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_12yenob">
           <text>"Possible"</text>
         </outputEntry>
@@ -56,6 +64,9 @@
           <text>"Knock-In"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1o8ma14">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13ms0g2">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1swdy5k">
@@ -72,6 +83,9 @@
         <inputEntry id="UnaryTests_0fl0zb3">
           <text>"C57Bl/6j","FVB","Balb/c"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1b8h7jb">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1ozgw25">
           <text>"Needs to be reviewed"</text>
         </outputEntry>
@@ -84,6 +98,9 @@
           <text>"Cryopreservation"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0gb1ewl">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16z4x7y">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1yhakkb">
@@ -100,6 +117,9 @@
         <inputEntry id="UnaryTests_1olpmkj">
           <text>"Balb/c","other"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0swtfd1">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1hmvnru">
           <text>"Needs to be reviewed"</text>
         </outputEntry>
@@ -113,6 +133,9 @@
         </inputEntry>
         <inputEntry id="UnaryTests_1iji61f">
           <text>"other"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qi089h">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1qqn486">
           <text>"Not Possible"</text>
