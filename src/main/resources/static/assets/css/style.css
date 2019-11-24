@@ -1,0 +1,8 @@
+body {
+    background: rgb(20,115,101);
+    background: radial-gradient(circle, rgba(20,115,101,1) 0%, rgba(2,50,21,1) 100%);
+}
+
+.banner {
+    margin-bottom: 10px;
+}
