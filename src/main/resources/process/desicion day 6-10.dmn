@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Definitions_14b2zwz" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="3.4.1">
+  <decision id="Decision_1uxhbcq" name="Decision 1">
+    <extensionElements>
+      <biodi:bounds x="157" y="81" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="decisionTable_1">
+      <input id="input_1" label="Day of Week">
+        <inputExpression id="inputExpression_1" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0y3s6y9" label="Particularity">
+        <inputExpression id="LiteralExpression_1rtw9jp" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="output_1" label="Take Sample?" typeRef="boolean" />
+      <rule id="DecisionRule_09zyy0h">
+        <inputEntry id="UnaryTests_1i6hj0t">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ca7pd1">
+          <text>"sick","holiday"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1dbdo2d">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_08vjbvx">
+        <inputEntry id="UnaryTests_0flcr2w">
+          <text>"Saturday","Sunday"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11gfwbs">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15t89hi">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1dckc81">
+        <inputEntry id="UnaryTests_1ffiluy">
+          <text>"Monday","Tuesday","Wednesday","Thursday","Friday"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1a25soj">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hsmn2y">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>

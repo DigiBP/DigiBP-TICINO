@@ -15,28 +15,102 @@
       <div class="card">
         <div class="card-body">
           <h1 class="text-center card-title">Order Transgenic Mice</h1>
-          <form>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          <form method="POST" action="/order" enctype="multipart/form-data">
+            <div class="form-group row">
+              <label for="firstname" class="col-sm-3 col-md-2 col-form-label">Firstname</label>
+              <div class="col-sm-9 col-md-10">
+                <input type="text" class="form-control" id="firstname" name="firstname" cam-variable-name="firstname" cam-variable-type="String">
+              </div>
             </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <div class="form-group row">
+              <label for="lastname" class="col-sm-3 col-md-2 col-form-label">Lastname</label>
+              <div class="col-sm-9 col-md-10">
+                <input type="text" class="form-control" id="lastname" name="lastname" cam-variable-name="lastname" cam-variable-type="String">
+              </div>
             </div>
-            <div class="form-group form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <div class="form-group row">
+              <label for="address" class="col-sm-3 col-md-2 col-form-label">Address</label>
+              <div class="col-sm-9 col-md-10">
+                <input type="text" class="form-control" id="address">
+              </div>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-group row">
+              <label for="phone" class="col-sm-3 col-md-2 col-form-label">Phone</label>
+              <div class="col-sm-9 col-md-10">
+                <input type="text" class="form-control" id="phone" placeholder="+41 560 128 30 74">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="email" class="col-sm-3 col-md-2 col-form-label">E-Mail</label>
+              <div class="col-sm-9 col-md-10">
+                <input type="email" class="form-control" id="email" placeholder="mail@provider.com">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="institution" class="col-sm-3 col-md-2 col-form-label">Institution</label>
+              <div class="col-sm-9 col-md-10">
+                <input type="text" class="form-control" id="institution" placeholder="e.g. University of Applied Sciences and Arts Northwestern Switzerland">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="project_type" class="col-sm-3 col-md-2 col-form-label">Project Type</label>
+              <div class="col-sm-9 col-md-10">
+                  <select class="custom-select" id="project_type">
+                    <option selected>Select One...</option>
+                    <option value="1">Knock-In</option>
+                    <option value="2">Knock-Out</option>
+                    <option value="3">Transgenic</option>
+                    <option value="4">Cryopreservation</option>
+                    <option value="5">Chimera Services (ES Cells)</option>
+                  </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="strain" class="col-sm-3 col-md-2 col-form-label">Strain</label>
+              <div class="col-sm-9 col-md-10">
+                  <select class="custom-select" id="strain">
+                    <option selected>Select One...</option>
+                    <option value="1">C57BL/6j</option>
+                    <option value="2">FVB</option>
+                    <option value="3">Balb/c</option>
+                    <option value="4">Other</option>
+                  </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="gene_of_interest" class="col-sm-3 col-md-2 col-form-label">Gene of interest</label>
+              <div class="col-sm-9 col-md-10">
+                <input type="text" class="form-control" id="gene_of_interest" name="genes">
+                <input type="text" class="form-control" name="genes">
+                <input type="text" class="form-control" name="genes">
+                <input type="text" class="form-control" name="genes">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-md-2 col-form-label pt-0">Following reagents can be provided:</label>
+              <div class="col-sm-9 col-md-10">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="check_crrna" name="materials" value="crrna">
+                  <label class="form-check-label" for="check_crrna">crRNA</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="check_ultramer" name="materials" value="ultramer">
+                  <label class="form-check-label" for="check_ultramer">Ultramer</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="check_plasmid" name="materials" value="plasmid">
+                  <label class="form-check-label" for="check_plasmid">Plasmid</label>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-success">Submit</button>
           </form>
         </div>
       </div>
     </div>
 
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <!--<script type="text/javascript" src="assets/js/app.js"></script>-->
   </body>
 </html>

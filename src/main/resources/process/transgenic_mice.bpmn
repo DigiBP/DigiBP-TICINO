@@ -158,7 +158,7 @@
       <bpmn:incoming>SequenceFlow_02pgxfe</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0qz5chr</bpmn:outgoing>
     </bpmn:businessRuleTask>
-    <bpmn:serviceTask id="Task_07iuh58" name="Register Project" camunda:expression="${database.writeProjectToDatabase()}">
+    <bpmn:serviceTask id="Task_07iuh58" name="Register Project" camunda:expression="${database.registerProject(execution, &#34;firstname&#34;, &#34;lastname&#34;)}">
       <bpmn:incoming>SequenceFlow_1c3ckaq</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0wnrcmw</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_1efgjxk">
@@ -372,7 +372,7 @@
       </bpmn:userTask>
     </bpmn:subProcess>
   </bpmn:process>
-  <bpmn:message id="Message_12u1utv" name="transgenic_mice_order_received" />
+  <bpmn:message id="Message_12u1utv" name="transgenic-mice_order-received" />
   <bpmn:message id="Message_0b628i7" name="transgenic_mice_samples" />
   <bpmn:message id="Message_0ur62em" name="transgenic_mice_feedback_received" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
