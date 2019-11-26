@@ -12,10 +12,13 @@
   <body>
     <div class="container">
       <div id="mouse-container"><img src="assets/img/mouse.jpg" class="img-fluid rounded banner" alt="Mouse" /></div>
+      <div id="orderSuccess" class="alert alert-success d-none" role="alert">
+        <strong>Order successful!</strong>
+      </div>
       <div class="card">
         <div class="card-body">
           <h1 class="text-center card-title">Order Transgenic Mice</h1>
-          <form method="POST" action="/order" enctype="multipart/form-data">
+          <form id="form">
             <div class="form-group row">
               <label for="firstname" class="col-sm-3 col-md-2 col-form-label">Firstname</label>
               <div class="col-sm-9 col-md-10">
@@ -31,49 +34,50 @@
             <div class="form-group row">
               <label for="address" class="col-sm-3 col-md-2 col-form-label">Address</label>
               <div class="col-sm-9 col-md-10">
-                <input type="text" class="form-control" id="address">
+                <input type="text" class="form-control" id="address" name="address" cam-variable-name="address" cam-variable-type="String">
               </div>
             </div>
             <div class="form-group row">
               <label for="phone" class="col-sm-3 col-md-2 col-form-label">Phone</label>
               <div class="col-sm-9 col-md-10">
-                <input type="text" class="form-control" id="phone" placeholder="+41 560 128 30 74">
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="+41 560 30 74" cam-variable-name="phone" cam-variable-type="String">
               </div>
             </div>
             <div class="form-group row">
               <label for="email" class="col-sm-3 col-md-2 col-form-label">E-Mail</label>
               <div class="col-sm-9 col-md-10">
-                <input type="email" class="form-control" id="email" placeholder="mail@provider.com">
+                <input type="email" class="form-control" id="email" name="email" placeholder="mail@provider.com" cam-variable-name="address" cam-variable-type="String">
               </div>
             </div>
             <div class="form-group row">
               <label for="institution" class="col-sm-3 col-md-2 col-form-label">Institution</label>
               <div class="col-sm-9 col-md-10">
-                <input type="text" class="form-control" id="institution" placeholder="e.g. University of Applied Sciences and Arts Northwestern Switzerland">
+                <input type="text" class="form-control" id="institution" name="institution" placeholder="e.g. University of Applied Sciences and Arts Northwestern Switzerland"
+                cam-variable-name="institution" cam-variable-type="String">
               </div>
             </div>
             <div class="form-group row">
               <label for="project_type" class="col-sm-3 col-md-2 col-form-label">Project Type</label>
               <div class="col-sm-9 col-md-10">
-                  <select class="custom-select" id="project_type">
+                  <select class="custom-select" id="projectType" name="projectType" cam-variable-name="projectType" cam-variable-type="String">
                     <option selected>Select One...</option>
-                    <option value="1">Knock-In</option>
-                    <option value="2">Knock-Out</option>
-                    <option value="3">Transgenic</option>
-                    <option value="4">Cryopreservation</option>
-                    <option value="5">Chimera Services (ES Cells)</option>
+                    <option>Knock-In</option>
+                    <option>Knock-Out</option>
+                    <option>Transgenic</option>
+                    <option>Cryopreservation</option>
+                    <option>Chimera Services (ES Cells)</option>
                   </select>
               </div>
             </div>
             <div class="form-group row">
               <label for="strain" class="col-sm-3 col-md-2 col-form-label">Strain</label>
               <div class="col-sm-9 col-md-10">
-                  <select class="custom-select" id="strain">
+                  <select class="custom-select" id="strain" name="strain" cam-variable-name="strain" cam-variable-type="String">
                     <option selected>Select One...</option>
-                    <option value="1">C57BL/6j</option>
-                    <option value="2">FVB</option>
-                    <option value="3">Balb/c</option>
-                    <option value="4">Other</option>
+                    <option>C57BL/6j</option>
+                    <option>FVB</option>
+                    <option>Balb/c</option>
+                    <option>Other</option>
                   </select>
               </div>
             </div>
@@ -90,15 +94,15 @@
               <label class="col-sm-3 col-md-2 col-form-label pt-0">Following reagents can be provided:</label>
               <div class="col-sm-9 col-md-10">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="check_crrna" name="materials" value="crrna">
+                  <input class="form-check-input" type="checkbox" id="check_crrna" name="providedReagents" value="crRNA">
                   <label class="form-check-label" for="check_crrna">crRNA</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="check_ultramer" name="materials" value="ultramer">
+                  <input class="form-check-input" type="checkbox" id="check_ultramer" name="providedReagents" value="Ultramer">
                   <label class="form-check-label" for="check_ultramer">Ultramer</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="check_plasmid" name="materials" value="plasmid">
+                  <input class="form-check-input" type="checkbox" id="check_plasmid" name="providedReagents" value="Plasmid">
                   <label class="form-check-label" for="check_plasmid">Plasmid</label>
                 </div>
               </div>
@@ -111,6 +115,6 @@
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <!--<script type="text/javascript" src="assets/js/app.js"></script>-->
+    <script type="text/javascript" src="assets/js/app.js"></script>
   </body>
 </html>

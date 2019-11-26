@@ -8,7 +8,7 @@ $(document).ready(function () {
             url: "/order",
             data: new FormData(this),
             success: function (data, textStatus, response) {
-                alert('success');
+                $('#orderSuccess').removeClass("d-none");
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 alert('meh');
