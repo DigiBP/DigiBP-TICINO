@@ -65,6 +65,23 @@ public class Database {
                         statementGenes.executeUpdate();
                     }
                 }
+
+                List<String> reagents = (List<String>) execution.getVariable(providedReagents);
+                String sqlReagents = "INSERT INTO project_reagents(project_id, reagent_id) VALUES(?, ?)";
+                PreparedStatement statementReagents = con.prepareStatement(sqlReagents);
+                statementReagents.setLong(1, projectId);
+
+                String reagentSelect = "SELECT id FROM reagent WHERE name = ?";
+                PreparedStatement statementReagentsSelect = con.prepareStatement(reagentSelect);
+
+                for( String reagent : reagents ) {
+                    statementReagentsSelect.setString(1, reagent);
+                    ResultSet reagentSet = statementReagentsSelect.executeQuery();
+                    if( reagentSet.next() ) {
+                        statementReagents.setLong(2, reagentSet.getLong("id"));
+                        statementReagents.executeUpdate();
+                    }
+                }
             }
 
 
