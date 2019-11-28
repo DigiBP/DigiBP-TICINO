@@ -158,7 +158,7 @@
       <bpmn:incoming>SequenceFlow_02pgxfe</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0qz5chr</bpmn:outgoing>
     </bpmn:businessRuleTask>
-    <bpmn:serviceTask id="Task_07iuh58" name="Register Project" camunda:expression="${database.registerProject(execution, &#34;firstname&#34;, &#34;lastname&#34;)}">
+    <bpmn:serviceTask id="Task_07iuh58" name="Register Project" camunda:expression="${database.registerProject(execution, &#34;firstname&#34;, &#34;lastname&#34;, &#34;address&#34;, &#34;phone&#34;, &#34;email&#34;, &#34;institution&#34;, &#34;projectType&#34;, &#34;strain&#34;, &#34;genes&#34;, &#34;providedReagents&#34;)}">
       <bpmn:incoming>SequenceFlow_1c3ckaq</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0wnrcmw</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_1efgjxk">

@@ -14,15 +14,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/")
 public class MouseOrderEndpoint {
-    
+
     @Autowired
     private ProcessEngine processEngine;
 
-    @PostMapping(path = "/order", consumes = "multipart/form-data", produces = "application/json")
+    @PostMapping(path = "/order")
     public void postOrder(@ModelAttribute TransgenicMouseRequest transgenicMouseRequest) {
         Map<String, Object> processVars = new HashMap<>();
-        processVars.put("firstname", transgenicMouseRequest.getFirstName());
-        processVars.put("lastname", transgenicMouseRequest.getLastName());
+        processVars.put("firstname", transgenicMouseRequest.getFirstname());
+        processVars.put("lastname", transgenicMouseRequest.getLastname());
+        processVars.put("address", transgenicMouseRequest.getAddress());
+        processVars.put("phone", transgenicMouseRequest.getPhone());
+        processVars.put("email", transgenicMouseRequest.getEmail());
+        processVars.put("institution", transgenicMouseRequest.getInstitution());
+        processVars.put("projectType", transgenicMouseRequest.getProjectType());
+        processVars.put("strain", transgenicMouseRequest.getStrain());
+        processVars.put("genes", transgenicMouseRequest.getGenes());
+        processVars.put("providedReagents", transgenicMouseRequest.getProvidedReagents());
 
         processEngine.getRuntimeService().startProcessInstanceByMessage("transgenic-mice_order-received", processVars);
     }
@@ -39,20 +47,84 @@ public class MouseOrderEndpoint {
         private List<String> genes;
         private List<String> providedReagents;
 
-        public void setFirstName( String firstname ) {
+        public void setFirstname(String firstname) {
             this.firstname = firstname;
         }
 
-        public String getFirstName() {
+        public List<String> getProvidedReagents() {
+            return providedReagents;
+        }
+
+        public void setProvidedReagents(List<String> providedReagents) {
+            this.providedReagents = providedReagents;
+        }
+
+        public List<String> getGenes() {
+            return genes;
+        }
+
+        public void setGenes(List<String> genes) {
+            this.genes = genes;
+        }
+
+        public String getFirstname() {
             return firstname;
         }
 
-        public void setLastName( String lastname ) {
+        public void setLastname( String lastname ) {
             this.lastname = lastname;
         }
 
-        public String getLastName() {
+        public String getLastname() {
             return lastname;
+        }
+
+        public void setAddress( String address ) {
+            this.address = address;
+        }
+
+        public String getAddress() {
+            return address;
+        }
+
+        public void setPhone( String phone ) {
+            this.phone = phone;
+        }
+
+        public String getPhone() {
+            return phone;
+        }
+
+        public void setEmail( String email ) {
+            this.email = email;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setInstitution( String institution ) {
+            this.institution = institution;
+        }
+
+        public String getInstitution() {
+            return institution;
+        }
+
+        public void setProjectType( String projectType ) {
+            this.projectType = projectType;
+        }
+
+        public String getProjectType() {
+            return projectType;
+        }
+
+        public void setStrain( String strain ) {
+            this.strain = strain;
+        }
+
+        public String getStrain() {
+            return strain;
         }
     }
 }
