@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0z420j8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.3.5">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0z420j8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.3.4">
   <bpmn:collaboration id="Collaboration_148g16j">
     <bpmn:participant id="Participant_101iy09" name="Customer" />
     <bpmn:participant id="Participant_1dna8yn" name="Transgenic Facility" processRef="transgenic-mice" />
@@ -363,7 +363,7 @@
         <bpmn:incoming>SequenceFlow_01ad27e</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_0m34kk1</bpmn:outgoing>
       </bpmn:userTask>
-      <bpmn:userTask id="ManualTask_0pn5gby" name="Record ...">
+      <bpmn:userTask id="ManualTask_0pn5gby" name="Record Samples (Tubes)">
         <bpmn:incoming>SequenceFlow_12yoddr</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_15r9412</bpmn:outgoing>
         <bpmn:dataOutputAssociation id="DataOutputAssociation_0ndqhv1">
