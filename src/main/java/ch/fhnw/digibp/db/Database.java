@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.sql.Date;
 
@@ -13,7 +14,7 @@ import org.camunda.bpm.engine.delegate.DelegateExecution;
 
 @Named
 public class Database {
-    public String registerProject(DelegateExecution execution, String firstname, String lastname, String address, String phone, String email, String institution, String projectType, String strain, String genes, String providedReagents) {
+    public List<String> registerProject(DelegateExecution execution, String firstname, String lastname, String address, String phone, String email, String institution, String projectType, String strain, String genes, String providedReagents) {
         
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -89,6 +90,10 @@ public class Database {
             e.printStackTrace();
         }
         
-        return "";
+        List<String> returnValue = new ArrayList<String>();
+        returnValue.add( (String) execution.getVariable(email) );
+        returnValue.add( (String) execution.getVariable(projectType) );
+
+        return returnValue;
     }
 }
