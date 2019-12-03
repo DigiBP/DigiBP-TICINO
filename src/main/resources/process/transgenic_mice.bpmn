@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0z420j8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.3.4">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0z420j8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.4.1">
   <bpmn:collaboration id="Collaboration_148g16j">
     <bpmn:participant id="Participant_101iy09" name="Customer" />
     <bpmn:participant id="Participant_1dna8yn" name="Transgenic Facility" processRef="transgenic-mice" />
     <bpmn:messageFlow id="MessageFlow_0tl1dae" name="Send Request" sourceRef="Participant_101iy09" targetRef="StartEvent_056e8bh" />
-    <bpmn:messageFlow id="MessageFlow_1gj4fqk" name="Meeting Request" sourceRef="Task_0qjdauv" targetRef="Participant_101iy09" />
     <bpmn:messageFlow id="MessageFlow_0234o3z" name="Return Form" sourceRef="Participant_101iy09" targetRef="IntermediateThrowEvent_1y3qrfe" />
-    <bpmn:messageFlow id="MessageFlow_17vdu1d" name="Request denied" sourceRef="Task_1t8iqe1" targetRef="Participant_101iy09" />
     <bpmn:messageFlow id="MessageFlow_08hy1hu" name="Mice" sourceRef="Task_0yohom1" targetRef="Participant_101iy09" />
     <bpmn:messageFlow id="MessageFlow_0vh3b54" name="Notify about Samples" sourceRef="IntermediateThrowEvent_0iq63nj" targetRef="Participant_101iy09" />
+    <bpmn:messageFlow id="MessageFlow_00njd9e" name="Request denied" sourceRef="IntermediateThrowEvent_04x32c5" targetRef="Participant_101iy09" />
+    <bpmn:messageFlow id="MessageFlow_159xvtl" name="Meeting request" sourceRef="IntermediateThrowEvent_1aimhz8" targetRef="Participant_101iy09" />
   </bpmn:collaboration>
   <bpmn:process id="transgenic-mice" isExecutable="true">
     <bpmn:laneSet id="LaneSet_1kdgjpj">
       <bpmn:lane id="Lane_0x1y6w6" name="Unit Leader">
         <bpmn:flowNodeRef>EndEvent_09rsmph</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_1t8iqe1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>ExclusiveGateway_0qvxdcs</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_0qjdauv</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_117wa3q</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_0yunppz</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_1hz6606</bpmn:flowNodeRef>
@@ -27,6 +25,8 @@
         <bpmn:flowNodeRef>Task_07iuh58</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>StartEvent_056e8bh</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_0uua9sa</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>IntermediateThrowEvent_1aimhz8</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>IntermediateThrowEvent_04x32c5</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_15t7c3u" name="Molecular Technician">
         <bpmn:flowNodeRef>Task_0p50qny</bpmn:flowNodeRef>
@@ -64,31 +64,31 @@
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:endEvent id="EndEvent_09rsmph">
-      <bpmn:incoming>SequenceFlow_0cssor4</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1rx52z3</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sendTask id="Task_1t8iqe1" name="Inform Customer" camunda:expression="${database.writeProjectToDatabase()}">
-      <bpmn:incoming>SequenceFlow_1c292tq</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0cssor4</bpmn:outgoing>
-    </bpmn:sendTask>
     <bpmn:exclusiveGateway id="ExclusiveGateway_0qvxdcs" name="Request feasibility?">
       <bpmn:incoming>SequenceFlow_1yqqmu3</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0f7fgul</bpmn:outgoing>
-      <bpmn:outgoing>SequenceFlow_1c292tq</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_02pgxfe</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0iwm3xi</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0578tre</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sendTask id="Task_0qjdauv" name="Set up Meeting" camunda:expression="${database.writeProjectToDatabase()}">
-      <bpmn:incoming>SequenceFlow_0f7fgul</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1pm9hgu</bpmn:outgoing>
-    </bpmn:sendTask>
     <bpmn:task id="Task_117wa3q" name="Meet Customer">
-      <bpmn:incoming>SequenceFlow_1pm9hgu</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0otmb4d</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_17zzcuu</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:businessRuleTask id="Task_0yunppz" name="Decide feasibilty" camunda:decisionRef="Decision_0cx04wk">
+    <bpmn:businessRuleTask id="Task_0yunppz" name="Decide feasibilty" camunda:resultVariable="feasibility" camunda:decisionRef="Decision_0cx04wk" camunda:mapDecisionResult="singleEntry">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="projectSource">${feasibilityFactors.get(0)}</camunda:inputParameter>
+          <camunda:inputParameter name="projectType">${feasibilityFactors.get(1)}</camunda:inputParameter>
+          <camunda:inputParameter name="targetBackground">${feasibilityFactors.get(2)}</camunda:inputParameter>
+          <camunda:outputParameter name="Output_3e4t1me" />
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_19an0ff</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1yqqmu3</bpmn:outgoing>
     </bpmn:businessRuleTask>
-    <bpmn:businessRuleTask id="Task_1hz6606" name="Define Project Type and responsible Person" camunda:decisionRef="Decision_1ognlc7">
+    <bpmn:businessRuleTask id="Task_1hz6606" name="Define Project Type" camunda:decisionRef="Decision_1ognlc7">
       <bpmn:incoming>SequenceFlow_17zzcuu</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_02pgxfe</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0qz5chr</bpmn:outgoing>
@@ -254,14 +254,9 @@
       <bpmn:outgoing>SequenceFlow_1c3ckaq</bpmn:outgoing>
       <bpmn:messageEventDefinition messageRef="Message_12u1utv" />
     </bpmn:startEvent>
-    <bpmn:serviceTask id="Task_0uua9sa" name="Define whether Project is internal or external" camunda:class="${processUtils.defineProjectSource(execution, &#34;feasibilityFactors&#34;)}">
+    <bpmn:serviceTask id="Task_0uua9sa" name="Define whether Project is internal or external" camunda:expression="${processUtils.isProjectExternal(execution, &#34;feasibilityFactors&#34;)}" camunda:resultVariable="feasibilityFactors">
       <bpmn:incoming>SequenceFlow_0d7vyx7</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_19an0ff</bpmn:outgoing>
-      <bpmn:property id="Property_06iwb2n" name="__targetRef_placeholder" />
-      <bpmn:dataInputAssociation id="DataInputAssociation_1pskgsz">
-        <bpmn:sourceRef>DataStoreReference_0ja58oi</bpmn:sourceRef>
-        <bpmn:targetRef>Property_06iwb2n</bpmn:targetRef>
-      </bpmn:dataInputAssociation>
     </bpmn:serviceTask>
     <bpmn:subProcess id="SubProcess_1i5zb43" name="Cryoperservation">
       <bpmn:incoming>SequenceFlow_1b4gtxh</bpmn:incoming>
@@ -321,18 +316,10 @@
         <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P5D</bpmn:timeDuration>
       </bpmn:timerEventDefinition>
     </bpmn:boundaryEvent>
-    <bpmn:sequenceFlow id="SequenceFlow_0cssor4" sourceRef="Task_1t8iqe1" targetRef="EndEvent_09rsmph" />
-    <bpmn:sequenceFlow id="SequenceFlow_1c292tq" name="Not Possible" sourceRef="ExclusiveGateway_0qvxdcs" targetRef="Task_1t8iqe1">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${x == "Not Possible"}</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="SequenceFlow_0f7fgul" name="Needs to be reviewed" sourceRef="ExclusiveGateway_0qvxdcs" targetRef="Task_0qjdauv">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${x == "Needs to be reviewed"}</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="SequenceFlow_1pm9hgu" sourceRef="Task_0qjdauv" targetRef="Task_117wa3q" />
     <bpmn:sequenceFlow id="SequenceFlow_1yqqmu3" sourceRef="Task_0yunppz" targetRef="ExclusiveGateway_0qvxdcs" />
     <bpmn:sequenceFlow id="SequenceFlow_17zzcuu" sourceRef="Task_117wa3q" targetRef="Task_1hz6606" />
     <bpmn:sequenceFlow id="SequenceFlow_02pgxfe" name="Possible" sourceRef="ExclusiveGateway_0qvxdcs" targetRef="Task_1hz6606">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${x == "Possible"}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${feasibility == "Possible"}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0qz5chr" sourceRef="Task_1hz6606" targetRef="ExclusiveGateway_0unitaq" />
     <bpmn:sequenceFlow id="SequenceFlow_0usbs3a" sourceRef="Task_07842in" targetRef="ExclusiveGateway_1ris650" />
@@ -382,6 +369,24 @@
     <bpmn:sequenceFlow id="SequenceFlow_1c3ckaq" sourceRef="StartEvent_056e8bh" targetRef="Task_07iuh58" />
     <bpmn:sequenceFlow id="SequenceFlow_0d7vyx7" sourceRef="Task_07iuh58" targetRef="Task_0uua9sa" />
     <bpmn:sequenceFlow id="SequenceFlow_19an0ff" sourceRef="Task_0uua9sa" targetRef="Task_0yunppz" />
+    <bpmn:sequenceFlow id="SequenceFlow_0iwm3xi" name="Not Possible" sourceRef="ExclusiveGateway_0qvxdcs" targetRef="IntermediateThrowEvent_04x32c5">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${feasibility == "Not Possible"}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="SequenceFlow_1rx52z3" sourceRef="IntermediateThrowEvent_04x32c5" targetRef="EndEvent_09rsmph" />
+    <bpmn:sequenceFlow id="SequenceFlow_0578tre" name="Needs to be reviewed" sourceRef="ExclusiveGateway_0qvxdcs" targetRef="IntermediateThrowEvent_1aimhz8">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${feasibility == "Needs to be reviewed"}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="SequenceFlow_0otmb4d" sourceRef="IntermediateThrowEvent_1aimhz8" targetRef="Task_117wa3q" />
+    <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_1aimhz8">
+      <bpmn:incoming>SequenceFlow_0578tre</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0otmb4d</bpmn:outgoing>
+      <bpmn:messageEventDefinition camunda:expression="${messageSender.sendMeetingRequest()}" />
+    </bpmn:intermediateThrowEvent>
+    <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_04x32c5">
+      <bpmn:incoming>SequenceFlow_0iwm3xi</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1rx52z3</bpmn:outgoing>
+      <bpmn:messageEventDefinition camunda:expression="${messageSender.sendMeetingRequest()}" />
+    </bpmn:intermediateThrowEvent>
   </bpmn:process>
   <bpmn:message id="Message_12u1utv" name="transgenic-mice_order-received" />
   <bpmn:message id="Message_0b628i7" name="transgenic_mice_samples" />
@@ -419,24 +424,6 @@
           <dc:Bounds x="801" y="286" width="51" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_0f7fgul_di" bpmnElement="SequenceFlow_0f7fgul">
-        <di:waypoint x="894" y="320" />
-        <di:waypoint x="937" y="320" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="877" y="336" width="60" height="27" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="MessageFlow_1gj4fqk_di" bpmnElement="MessageFlow_1gj4fqk">
-        <di:waypoint x="987" y="280" />
-        <di:waypoint x="987" y="140" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="894" y="203" width="85" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_1pm9hgu_di" bpmnElement="SequenceFlow_1pm9hgu">
-        <di:waypoint x="1037" y="320" />
-        <di:waypoint x="1105" y="320" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="DataStoreReference_0ja58oi_di" bpmnElement="DataStoreReference_0ja58oi">
         <dc:Bounds x="1285" y="685" width="50" height="50" />
         <bpmndi:BPMNLabel>
@@ -566,9 +553,6 @@
         <di:waypoint x="3700" y="720" />
         <di:waypoint x="1335" y="720" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="SendTask_0o8dc96_di" bpmnElement="Task_0qjdauv">
-        <dc:Bounds x="937" y="280" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="UserTask_03d76jm_di" bpmnElement="Task_0j49vmt">
         <dc:Bounds x="1760" y="320" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -596,31 +580,9 @@
         <di:waypoint x="778" y="320" />
         <di:waypoint x="844" y="320" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_1c292tq_di" bpmnElement="SequenceFlow_1c292tq">
-        <di:waypoint x="869" y="345" />
-        <di:waypoint x="869" y="430" />
-        <di:waypoint x="1021" y="430" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="876" y="387" width="62" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_09rsmph_di" bpmnElement="EndEvent_09rsmph">
         <dc:Bounds x="1183" y="412" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_0cssor4_di" bpmnElement="SequenceFlow_0cssor4">
-        <di:waypoint x="1121" y="430" />
-        <di:waypoint x="1183" y="430" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="SendTask_01cgalw_di" bpmnElement="Task_1t8iqe1">
-        <dc:Bounds x="1021" y="390" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="MessageFlow_17vdu1d_di" bpmnElement="MessageFlow_17vdu1d">
-        <di:waypoint x="1071" y="390" />
-        <di:waypoint x="1071" y="140" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1078" y="203" width="78" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ExclusiveGateway_0unitaq_di" bpmnElement="ExclusiveGateway_0unitaq" isMarkerVisible="true">
         <dc:Bounds x="1425" y="295" width="50" height="50" />
         <bpmndi:BPMNLabel>
@@ -945,10 +907,48 @@
         <di:waypoint x="642" y="320" />
         <di:waypoint x="678" y="320" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataInputAssociation_1pskgsz_di" bpmnElement="DataInputAssociation_1pskgsz">
-        <di:waypoint x="1285" y="710" />
-        <di:waypoint x="600" y="710" />
-        <di:waypoint x="600" y="360" />
+      <bpmndi:BPMNEdge id="SequenceFlow_0iwm3xi_di" bpmnElement="SequenceFlow_0iwm3xi">
+        <di:waypoint x="869" y="345" />
+        <di:waypoint x="869" y="430" />
+        <di:waypoint x="1022" y="430" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="874" y="385" width="62" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1rx52z3_di" bpmnElement="SequenceFlow_1rx52z3">
+        <di:waypoint x="1058" y="430" />
+        <di:waypoint x="1183" y="430" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="IntermediateThrowEvent_11mj3z9_di" bpmnElement="IntermediateThrowEvent_04x32c5">
+        <dc:Bounds x="1022" y="412" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="MessageFlow_00njd9e_di" bpmnElement="MessageFlow_00njd9e">
+        <di:waypoint x="1040" y="412" />
+        <di:waypoint x="1040" y="140" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1051" y="223" width="78" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0578tre_di" bpmnElement="SequenceFlow_0578tre">
+        <di:waypoint x="894" y="320" />
+        <di:waypoint x="962" y="320" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="898" y="326" width="60" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0otmb4d_di" bpmnElement="SequenceFlow_0otmb4d">
+        <di:waypoint x="998" y="320" />
+        <di:waypoint x="1105" y="320" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="IntermediateThrowEvent_1wbiy2u_di" bpmnElement="IntermediateThrowEvent_1aimhz8">
+        <dc:Bounds x="962" y="302" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="MessageFlow_159xvtl_di" bpmnElement="MessageFlow_159xvtl">
+        <di:waypoint x="980" y="302" />
+        <di:waypoint x="980" y="140" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="900" y="213" width="80" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

@@ -1,6 +1,5 @@
 package ch.fhnw.digibp.utils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Named;
@@ -9,12 +8,16 @@ import org.camunda.bpm.engine.delegate.DelegateExecution;
 
 @Named
 class ProcessUtils {
-    public List<String> defineProjectSource (DelegateExecution execution, String feasibilityFactorString) {
+    public List<Object> isProjectExternal (DelegateExecution execution, String feasibilityFactorString) {
 
-        List<String> feasibilityFactors = (List<String>) execution.getVariable(feasibilityFactorString);
+        List<Object> feasibilityFactors = (List<Object>) execution.getVariable(feasibilityFactorString);
 
-        System.out.println(feasibilityFactors.get(0));
+        String email = (String) feasibilityFactors.get(0); //get e-mail address
 
-        return new ArrayList<>();
+        feasibilityFactors.remove(0); //remove e-mail address from list
+
+        feasibilityFactors.add(0, email.toLowerCase().contains("fhnw") ? "Internal" : "External");
+
+        return feasibilityFactors;
     }
 }

@@ -14,11 +14,14 @@ import org.camunda.bpm.engine.delegate.DelegateExecution;
 
 @Named
 public class Database {
-    public List<String> registerProject(DelegateExecution execution, String firstname, String lastname, String address, String phone, String email, String institution, String projectType, String strain, String genes, String providedReagents) {
-        
+    public List<String> registerProject(DelegateExecution execution, String firstname, String lastname, String address,
+            String phone, String email, String institution, String projectType, String strain, String genes,
+            String providedReagents) {
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://g65mtwvif31z21d8:deoa5ltibxjdp6vm@n7qmaptgs6baip9z.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/sd104zmnv09fsqm0");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://g65mtwvif31z21d8:deoa5ltibxjdp6vm@n7qmaptgs6baip9z.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/sd104zmnv09fsqm0");
 
             String sql = "INSERT INTO customer(firstname, lastname, address, phone, email, institution) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -32,36 +35,36 @@ public class Database {
 
             java.util.Date date = new java.util.Date();
             String sqlProject = "INSERT INTO project(customer_id, type, background_strain, created_at, completed) VALUES (?, ?, ?, ?, ?)";
-            PreparedStatement statementProject = con.prepareStatement(sqlProject, PreparedStatement.RETURN_GENERATED_KEYS);
-            
-            //Get and Set the customer_id field
+            PreparedStatement statementProject = con.prepareStatement(sqlProject,
+                    PreparedStatement.RETURN_GENERATED_KEYS);
+
+            // Get and Set the customer_id field
             ResultSet generatedKeys = statement.getGeneratedKeys();
-            if( generatedKeys.next() ) {
+            if (generatedKeys.next()) {
                 statementProject.setLong(1, generatedKeys.getLong(1));
             }
 
             statementProject.setString(2, (String) execution.getVariable(projectType));
             statementProject.setString(3, (String) execution.getVariable(strain));
-            statementProject.setDate(4, new Date( date.getTime() ));
+            statementProject.setDate(4, new Date(date.getTime()));
             statementProject.setInt(5, 0);
             statementProject.executeUpdate();
 
             long projectId = 0;
-            //get project id
+            // get project id
             generatedKeys = statementProject.getGeneratedKeys();
-            if( generatedKeys.next() ) {
+            if (generatedKeys.next()) {
                 projectId = generatedKeys.getLong(1);
             }
 
-            if( projectId > 0 )
-            {
+            if (projectId > 0) {
                 List<String> genesOfInterest = (List<String>) execution.getVariable(genes);
                 String sqlGenes = "INSERT INTO gene_of_interest(project_id, description) VALUES (?, ?)";
                 PreparedStatement statementGenes = con.prepareStatement(sqlGenes);
                 statementGenes.setLong(1, projectId);
 
-                for( String gene : genesOfInterest ) {
-                    if( gene.trim().length() > 0 ) {
+                for (String gene : genesOfInterest) {
+                    if (gene.trim().length() > 0) {
                         statementGenes.setString(2, gene);
                         statementGenes.executeUpdate();
                     }
@@ -75,24 +78,24 @@ public class Database {
                 String reagentSelect = "SELECT id FROM reagent WHERE name = ?";
                 PreparedStatement statementReagentsSelect = con.prepareStatement(reagentSelect);
 
-                for( String reagent : reagents ) {
+                for (String reagent : reagents) {
                     statementReagentsSelect.setString(1, reagent);
                     ResultSet reagentSet = statementReagentsSelect.executeQuery();
-                    if( reagentSet.next() ) {
+                    if (reagentSet.next()) {
                         statementReagents.setLong(2, reagentSet.getLong("id"));
                         statementReagents.executeUpdate();
                     }
                 }
             }
 
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         List<String> returnValue = new ArrayList<String>();
-        returnValue.add( (String) execution.getVariable(email) );
-        returnValue.add( (String) execution.getVariable(projectType) );
+        returnValue.add((String) execution.getVariable(email));
+        returnValue.add((String) execution.getVariable(projectType));
+        returnValue.add((String) execution.getVariable(strain));
 
         return returnValue;
     }

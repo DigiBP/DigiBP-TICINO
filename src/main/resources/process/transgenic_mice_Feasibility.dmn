@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Definitions_1gk8zcb" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="3.3.4">
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Definitions_1gk8zcb" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="3.4.1">
   <decision id="Decision_0cx04wk" name="Feasibility">
     <extensionElements>
       <biodi:bounds x="157" y="81" width="180" height="80" />
     </extensionElements>
     <decisionTable id="decisionTable_1">
       <input id="input_1" label="Internal / External">
-        <inputExpression id="inputExpression_1" typeRef="string">
-          <text>InternalExternal</text>
+        <inputExpression id="inputExpression_1" typeRef="string" expressionLanguage="">
+          <text>projectSource</text>
         </inputExpression>
-        <inputValues id="UnaryTests_0n45fga">
+        <inputValues id="UnaryTests_1grptkx">
           <text>"Internal","External"</text>
         </inputValues>
       </input>
       <input id="InputClause_0h1hh5c" label="Project Type">
         <inputExpression id="LiteralExpression_0z635w5" typeRef="string">
-          <text>ProjectType</text>
+          <text>projectType</text>
         </inputExpression>
         <inputValues id="UnaryTests_18lu332">
           <text>"Knock-In","Knock-Out","Transgenic","Cryopreservation"</text>
@@ -23,7 +23,7 @@
       </input>
       <input id="InputClause_1ye9m8e" label="Target Background">
         <inputExpression id="LiteralExpression_08zvq7f" typeRef="string">
-          <text>TargetBackground</text>
+          <text>targetBackground</text>
         </inputExpression>
         <inputValues id="UnaryTests_17zwfl2">
           <text>"C57Bl/6j","FVB","Balb/c","other"</text>
