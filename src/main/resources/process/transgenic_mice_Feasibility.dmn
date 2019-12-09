@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Definitions_1gk8zcb" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="3.4.1">
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Definitions_1gk8zcb" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="3.3.5">
   <decision id="Decision_0cx04wk" name="Feasibility">
     <extensionElements>
       <biodi:bounds x="157" y="81" width="180" height="80" />
@@ -42,7 +42,7 @@
           <text>"Knock-Out","Transgenic","Cryopreservation"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0dnm4em">
-          <text>"C57Bl/6j","FVB"</text>
+          <text>"C57BL/6j","FVB"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_12yenob">
           <text>"Possible"</text>
@@ -70,7 +70,7 @@
           <text>"Knock-In","Knock-Out","Transgenic"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0fl0zb3">
-          <text>"C57Bl/6j","FVB","Balb/c"</text>
+          <text>"C57BL/6j","FVB","Balb/c"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1ozgw25">
           <text>"Needs to be reviewed"</text>

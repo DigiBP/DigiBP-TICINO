@@ -99,4 +99,9 @@ public class Database {
 
         return returnValue;
     }
+
+    public boolean doNothing()
+    {
+        return true;
+    }
 }
