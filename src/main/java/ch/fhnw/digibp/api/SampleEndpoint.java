@@ -1,7 +1,5 @@
 package ch.fhnw.digibp.api;
 
-import java.util.concurrent.TimeUnit;
-
 import org.camunda.bpm.engine.ProcessEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,22 +9,22 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = "/")
-class BirthCheckEndpoint {
+class SampleEndpoint {
 
     @Autowired
     private ProcessEngine processEngine;
 
-    @PostMapping(path = "/birth-check")
-    public void postOrder(@ModelAttribute BirthCheckRequest birthCheckRequest) {
-        String taskId = birthCheckRequest.getTaskId();
-
-        processEngine.getTaskService().setVariable(taskId, "births", birthCheckRequest.getBirth());
+    @PostMapping(path = "/record-samples")
+    public void postOrder(@ModelAttribute SampleRequest sampleRequest) {
+        String taskId = sampleRequest.getTaskId();
+        
+        
         processEngine.getTaskService().complete(taskId);
     }
 
-    private static class BirthCheckRequest {
+    private static class SampleRequest {
         private String taskId;
-        private boolean birth;
+        private String bla;
 
         public String getTaskId()
         {
@@ -38,14 +36,15 @@ class BirthCheckEndpoint {
             this.taskId = taskId;
         }
 
-        public boolean getBirth()
+        public String getBla()
         {
-            return birth;
+            return bla;
         }
 
-        public void setBirth( boolean birth )
+        public void setBla( String bla )
         {
-            this.birth = birth;
+            this.bla = bla;
         }
+
     }
 }

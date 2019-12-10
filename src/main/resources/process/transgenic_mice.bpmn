@@ -77,7 +77,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_1ddnsb8" sourceRef="Task_0re7pte" targetRef="IntermediateThrowEvent_1wjkfhq" />
     <bpmn:sequenceFlow id="SequenceFlow_04nhfk9" sourceRef="ExclusiveGateway_0c7f63v" targetRef="Task_0yohom1" />
     <bpmn:sequenceFlow id="SequenceFlow_0v91uzr" name="yes" sourceRef="ExclusiveGateway_1pdrg9l" targetRef="ExclusiveGateway_0c7f63v">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${x == true}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${samplesOk}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0la452o" sourceRef="IntermediateThrowEvent_0iq63nj" targetRef="IntermediateThrowEvent_1y3qrfe" />
     <bpmn:sequenceFlow id="SequenceFlow_19zgad3" sourceRef="Task_1ci8off" targetRef="IntermediateThrowEvent_0iq63nj" />
@@ -110,7 +110,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_0q6nwqv" sourceRef="ExclusiveGateway_1ris650" targetRef="Task_1qr8jx0" />
     <bpmn:sequenceFlow id="SequenceFlow_106ss8c" sourceRef="ExclusiveGateway_1ris650" targetRef="Task_0p82m1u" />
     <bpmn:sequenceFlow id="SequenceFlow_1ra7dpz" name="No" sourceRef="ExclusiveGateway_1pdrg9l" targetRef="Task_0j49vmt">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${x == false}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!samplesOk}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_1c3ckaq" sourceRef="StartEvent_056e8bh" targetRef="Task_07iuh58" />
     <bpmn:sequenceFlow id="SequenceFlow_0d7vyx7" sourceRef="Task_07iuh58" targetRef="Task_0uua9sa" />
@@ -126,12 +126,6 @@
     <bpmn:sequenceFlow id="SequenceFlow_1ijmpi1" sourceRef="ExclusiveGateway_091self" targetRef="Task_1pywh3v" />
     <bpmn:sequenceFlow id="SequenceFlow_0e3xaoi" sourceRef="Task_0p82m1u" targetRef="ExclusiveGateway_091self" />
     <bpmn:sequenceFlow id="SequenceFlow_0bhdklg" sourceRef="Task_1mk24c1" targetRef="ExclusiveGateway_091self" />
-    <bpmn:boundaryEvent id="IntermediateThrowEvent_15yvtip" name="5 Days" cancelActivity="false" attachedToRef="Task_0yzu7q9">
-      <bpmn:outgoing>SequenceFlow_1nabbut</bpmn:outgoing>
-      <bpmn:timerEventDefinition id="TimerEventDefinition_11l3x82">
-        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P5D</bpmn:timeDuration>
-      </bpmn:timerEventDefinition>
-    </bpmn:boundaryEvent>
     <bpmn:parallelGateway id="ExclusiveGateway_091self">
       <bpmn:incoming>SequenceFlow_0e3xaoi</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_0bhdklg</bpmn:incoming>
@@ -331,14 +325,17 @@
         </bpmn:dataOutputAssociation>
       </bpmn:userTask>
     </bpmn:subProcess>
-    <bpmn:userTask id="Task_0re7pte" name="Record Number of Births">
+    <bpmn:userTask id="Task_0re7pte" name="Record Number of Births" camunda:assignee="demo" camunda:candidateUsers="demo">
+      <bpmn:extensionElements>
+        <camunda:taskListener expression="${taskAssignedListener.recordBirthsListener(task)}" event="create" />
+      </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_10w6rxm</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1ddnsb8</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_17xtp5a">
         <bpmn:targetRef>DataStoreReference_0ja58oi</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_02hjkpo" name="Check for births">
+    <bpmn:userTask id="Task_02hjkpo" name="Check for births" camunda:assignee="demo" camunda:candidateUsers="demo">
       <bpmn:extensionElements>
         <camunda:taskListener expression="${taskAssignedListener.checkForBirthsListener(task)}" event="create" />
       </bpmn:extensionElements>
@@ -352,12 +349,16 @@
     </bpmn:exclusiveGateway>
     <bpmn:manualTask id="Task_0yzu7q9" name="Decide to take samples">
       <bpmn:incoming>SequenceFlow_1yoyk3m</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1irtf50</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:serviceTask id="Task_0p50qny" name="Analyse return form" camunda:expression="${database.writeProjectToDatabase()}">
+    <bpmn:serviceTask id="Task_0p50qny" name="Analyse return form" camunda:expression="${database.completeProject(execution)}">
       <bpmn:incoming>SequenceFlow_0mmheow</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0qqko12</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:userTask id="Task_1ci8off" name="Record Samples">
+      <bpmn:extensionElements>
+        <camunda:taskListener expression="${taskAssignedListener.recordSamplesListener(task)}" event="create" />
+      </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_016guw3</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_19zgad3</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_0x2rqq8">
@@ -366,6 +367,7 @@
     </bpmn:userTask>
     <bpmn:manualTask id="Task_09mq293" name="Take Samples (Toetips)">
       <bpmn:incoming>SequenceFlow_1nabbut</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1irtf50</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_016guw3</bpmn:outgoing>
     </bpmn:manualTask>
     <bpmn:manualTask id="Task_0yohom1" name="Send Mice">
@@ -397,7 +399,7 @@
     <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_0iq63nj">
       <bpmn:incoming>SequenceFlow_19zgad3</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0la452o</bpmn:outgoing>
-      <bpmn:messageEventDefinition messageRef="Message_0b628i7" />
+      <bpmn:messageEventDefinition messageRef="Message_0b628i7" camunda:expression="${messageSender.sendSamples(execution)}" />
     </bpmn:intermediateThrowEvent>
     <bpmn:endEvent id="EndEvent_03b6i1h">
       <bpmn:incoming>SequenceFlow_0k8qpv4</bpmn:incoming>
@@ -416,6 +418,13 @@
       <bpmn:incoming>SequenceFlow_0otmb4d</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_17zzcuu</bpmn:outgoing>
     </bpmn:task>
+    <bpmn:sequenceFlow id="SequenceFlow_1irtf50" sourceRef="Task_0yzu7q9" targetRef="Task_09mq293" />
+    <bpmn:boundaryEvent id="IntermediateThrowEvent_15yvtip" name="5 Days" attachedToRef="Task_0yzu7q9">
+      <bpmn:outgoing>SequenceFlow_1nabbut</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_191hjew">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P5D</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:boundaryEvent>
   </bpmn:process>
   <bpmn:message id="Message_12u1utv" name="transgenic-mice_order-received" />
   <bpmn:message id="Message_0b628i7" name="transgenic_mice_samples" />
@@ -739,12 +748,6 @@
       <bpmndi:BPMNShape id="UserTask_0aac8ve_di" bpmnElement="Task_0re7pte">
         <dc:Bounds x="3350" y="1320" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BoundaryEvent_0ttt702_di" bpmnElement="IntermediateThrowEvent_15yvtip">
-        <dc:Bounds x="3622" y="1382" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="3602" y="1425" width="35" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ManualTask_1b6csls_di" bpmnElement="Task_1pywh3v">
         <dc:Bounds x="2380" y="930" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -985,6 +988,18 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="UserTask_158k9t8_di" bpmnElement="Task_02hjkpo">
         <dc:Bounds x="3090" y="1320" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1irtf50_di" bpmnElement="SequenceFlow_1irtf50">
+        <di:waypoint x="3670" y="1360" />
+        <di:waypoint x="3700" y="1360" />
+        <di:waypoint x="3700" y="1430" />
+        <di:waypoint x="3730" y="1430" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="BoundaryEvent_0c6d2s8_di" bpmnElement="IntermediateThrowEvent_15yvtip">
+        <dc:Bounds x="3622" y="1382" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3602" y="1425" width="35" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

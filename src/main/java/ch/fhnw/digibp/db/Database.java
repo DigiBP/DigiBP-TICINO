@@ -104,4 +104,11 @@ public class Database {
     {
         return true;
     }
+
+    public boolean completeProject( DelegateExecution execution )
+    {
+        boolean samplesOk = (boolean) execution.getVariable("samplesOk");
+
+        return true;
+    }
 }

@@ -117,4 +117,75 @@ $(document).ready(function () {
             }
         });
     });
+
+    $("#formBirthRecord").submit(function (event) {
+        
+        event.preventDefault();
+        var url = new URL(window.location.href);
+        var id = url.searchParams.get("id");
+        $('#taskId').val(id);
+        $.ajax({
+            type: "POST",
+            processData: false,
+            contentType: false,
+            url: "/record-birth",
+            data: new FormData(this),
+            success: function (data, textStatus, response) {
+                //$('#orderSuccess').removeClass("d-none");
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                //alert('meh');
+            }
+        });
+    });
+
+    $("#formSampleRecord").submit(function (event) {
+        
+        event.preventDefault();
+        var url = new URL(window.location.href);
+        var id = url.searchParams.get("id");
+        $('#taskId').val(id);
+        $.ajax({
+            type: "POST",
+            processData: false,
+            contentType: false,
+            url: "/record-samples",
+            data: new FormData(this),
+            success: function (data, textStatus, response) {
+                //$('#orderSuccess').removeClass("d-none");
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                //alert('meh');
+            }
+        });
+    });
+
+    $('#samplePositive').click(function() {
+        $('#sampleResult').val(true);
+    });
+
+    $('#sampleNegative').click(function() {
+        $('#sampleResult').val(false);
+    });
+
+    $("#sampleConfirmForm").submit(function (event) {
+        
+        event.preventDefault();
+        var url = new URL(window.location.href);
+        var id = url.searchParams.get("id");
+        $('#taskId').val(id);
+        $.ajax({
+            type: "POST",
+            processData: false,
+            contentType: false,
+            url: "/confirm-samples",
+            data: new FormData(this),
+            success: function (data, textStatus, response) {
+                //$('#orderSuccess').removeClass("d-none");
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                //alert('meh');
+            }
+        });
+    });
 });
