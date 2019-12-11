@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("#form").submit(function (event) {
+    $("#formPlaceOrder").submit(function (event) {
         event.preventDefault();
         $.ajax({
             type: "POST",

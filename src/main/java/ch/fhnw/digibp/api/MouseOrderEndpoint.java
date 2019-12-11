@@ -29,8 +29,8 @@ public class MouseOrderEndpoint {
         processVars.put("institution", transgenicMouseRequest.getInstitution());
         processVars.put("projectType", transgenicMouseRequest.getProjectType());
         processVars.put("strain", transgenicMouseRequest.getStrain());
-        processVars.put("genes", transgenicMouseRequest.getGenes());
-        processVars.put("providedReagents", transgenicMouseRequest.getProvidedReagents());
+        //processVars.put("genes", transgenicMouseRequest.getGenes());
+        processVars.put("reagents", transgenicMouseRequest.getReagents());
 
         processEngine.getRuntimeService().startProcessInstanceByMessage("transgenic-mice_order-received", processVars);
     }
@@ -45,18 +45,19 @@ public class MouseOrderEndpoint {
         private String projectType;
         private String strain;
         private List<String> genes;
-        private List<String> providedReagents;
+        private List<String> reagents;
+        private String sequence;
 
         public void setFirstname(String firstname) {
             this.firstname = firstname;
         }
 
-        public List<String> getProvidedReagents() {
-            return providedReagents;
+        public List<String> getReagents() {
+            return reagents;
         }
 
-        public void setProvidedReagents(List<String> providedReagents) {
-            this.providedReagents = providedReagents;
+        public void setReagents(List<String> reagents) {
+            this.reagents = reagents;
         }
 
         public List<String> getGenes() {
@@ -125,6 +126,14 @@ public class MouseOrderEndpoint {
 
         public String getStrain() {
             return strain;
+        }
+
+        public String getSequence() {
+            return sequence;
+        }
+
+        public void setSequence( String sequence ) {
+            this.sequence = sequence;
         }
     }
 }
