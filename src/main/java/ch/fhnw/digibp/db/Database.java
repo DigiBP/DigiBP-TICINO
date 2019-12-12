@@ -58,17 +58,17 @@ public class Database {
             }
 
             if (projectId > 0) {
-                List<String> genesOfInterest = (List<String>) execution.getVariable(genes);
+                //List<String> genesOfInterest = (List<String>) execution.getVariable(genes);
                 String sqlGenes = "INSERT INTO gene_of_interest(project_id, description) VALUES (?, ?)";
                 PreparedStatement statementGenes = con.prepareStatement(sqlGenes);
                 statementGenes.setLong(1, projectId);
 
-                for (String gene : genesOfInterest) {
+                /*for (String gene : genesOfInterest) {
                     if (gene.trim().length() > 0) {
                         statementGenes.setString(2, gene);
                         statementGenes.executeUpdate();
                     }
-                }
+                }*/
 
                 List<String> reagents = (List<String>) execution.getVariable(providedReagents);
                 String sqlReagents = "INSERT INTO project_reagents(project_id, reagent_id) VALUES(?, ?)";

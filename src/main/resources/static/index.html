@@ -15,13 +15,31 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href="assets/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- Bootstrap -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <!-- web font -->
 <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
 <!-- //web font -->
 </head>
 <body>
-	<!-- main -->
+  <!-- Modal -->
+  <div class="modal fade" id="order-response" tabindex="-1" role="dialog" aria-labelledby="order-response-label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-title"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <span id="modal-content"></span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- main -->
 	<div class="main-w3layouts wrapper">
 		<h1>Order Transgenic Mice</h1>
 		<div class="main-agileinfo">
@@ -50,6 +68,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           <div class="selectdiv form-group">
             <select name="projectType">
               <option>Project Type</option>
+              <option>Knock-In</option>
               <option>Knock-Out</option>
               <option>Transgenic</option>
               <option>Cryopreservation</option>
@@ -57,8 +76,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </select>
           </div>
           <div class="selectdiv form-group">
-            <select name="strain">
-              <option>Strain</option>
+            <select name="background">
+              <option>Background</option>
               <option>C57BL/6j</option>
               <option>FVB</option>
               <option>Balb/c</option>
@@ -109,6 +128,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   <!-- //main -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script type="text/javascript" src="assets/js/app.js"></script>
 </body>
 </html>

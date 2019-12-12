@@ -1,19 +1,31 @@
 $(document).ready(function () {
     $("#formPlaceOrder").submit(function (event) {
         event.preventDefault();
-        $.ajax({
-            type: "POST",
-            processData: false,
-            contentType: false,
-            url: "/order",
-            data: new FormData(this),
-            success: function (data, textStatus, response) {
-                $('#orderSuccess').removeClass("d-none");
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                alert('meh');
-            }
-        });
+
+        if( jQuery('#formPlaceOrder input[type=checkbox][name=reagents]:checked').length > 0 )
+        {
+            $.ajax({
+                type: "POST",
+                processData: false,
+                contentType: false,
+                url: "/order",
+                data: new FormData(this),
+                success: function (data, textStatus, response) {
+                    $('#modal-title').html('Order Successful');
+                    $('#modal-content').html('You will be notified about the further steps!');
+                    $('#order-response').modal();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $('#modal-title').html('Something went wrong');
+                    $('#modal-content').html('I\'m Sorry!');
+                    $('#order-response').modal();
+                }
+            });
+        }
+        else
+        {
+            alert('Nope');
+        }
     });
 });
 
@@ -24,7 +36,6 @@ $(document).ready(function () {
         var url = new URL(window.location.href);
         var id = url.searchParams.get("id");
         $('#taskId').val(id);
-        //alert(id);
         $.ajax({
             type: "POST",
             processData: false,

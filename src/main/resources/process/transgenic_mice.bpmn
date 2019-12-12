@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0z420j8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.3.5">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0z420j8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.3.4">
   <bpmn:collaboration id="Collaboration_148g16j">
     <bpmn:participant id="Participant_101iy09" name="Customer" />
     <bpmn:participant id="Participant_1dna8yn" name="Transgenic Facility" processRef="transgenic-mice" />
@@ -13,57 +13,59 @@
   <bpmn:process id="transgenic-mice" isExecutable="true">
     <bpmn:laneSet id="LaneSet_1kdgjpj">
       <bpmn:lane id="Lane_0x1y6w6" name="Unit Leader">
-        <bpmn:flowNodeRef>Task_117wa3q</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>IntermediateThrowEvent_04x32c5</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>IntermediateThrowEvent_1aimhz8</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_0uua9sa</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>StartEvent_056e8bh</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_07iuh58</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_0sgsb4w</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>ExclusiveGateway_0unitaq</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_0j49vmt</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_07842in</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_1hz6606</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_0yunppz</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>ExclusiveGateway_0qvxdcs</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>EndEvent_09rsmph</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ExclusiveGateway_0qvxdcs</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_0yunppz</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_1hz6606</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_07842in</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_0j49vmt</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ExclusiveGateway_0unitaq</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_0sgsb4w</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_07iuh58</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>StartEvent_056e8bh</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_0uua9sa</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>IntermediateThrowEvent_1aimhz8</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>IntermediateThrowEvent_04x32c5</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_117wa3q</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_15t7c3u" name="Molecular Technician">
-        <bpmn:flowNodeRef>IntermediateThrowEvent_0iq63nj</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>ExclusiveGateway_0c7f63v</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>IntermediateThrowEvent_1y3qrfe</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>ExclusiveGateway_1pdrg9l</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_0p50qny</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_1qr8jx0</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>ExclusiveGateway_1ris650</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_0xls4gn</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_1mk24c1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>ExclusiveGateway_091self</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_1mk24c1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_0xls4gn</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ExclusiveGateway_1ris650</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_1qr8jx0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_0wvh5hg</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_0p50qny</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ExclusiveGateway_1pdrg9l</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>IntermediateThrowEvent_1y3qrfe</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ExclusiveGateway_0c7f63v</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>IntermediateThrowEvent_0iq63nj</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_1ezsc47" name="Injection Technician">
-        <bpmn:flowNodeRef>Task_0x8e0na</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_1pywh3v</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_0p82m1u</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_0f0eepw</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_12yz357</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_0f0eepw</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_0p82m1u</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_1pywh3v</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_0x8e0na</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_1qtbrxr" name="Animal Caretaker">
-        <bpmn:flowNodeRef>EndEvent_03b6i1h</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>IntermediateThrowEvent_1wjkfhq</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_0yohom1</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_09mq293</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_1ci8off</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_0yzu7q9</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>ExclusiveGateway_15qw2e4</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_02hjkpo</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_0re7pte</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>IntermediateThrowEvent_0ufqvqv</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_0re7pte</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_02hjkpo</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ExclusiveGateway_15qw2e4</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_0yzu7q9</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_1ci8off</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_09mq293</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_0yohom1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>IntermediateThrowEvent_1wjkfhq</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_03b6i1h</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>IntermediateThrowEvent_15yvtip</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_0zy3vl0" name="Cryotechnician">
         <bpmn:flowNodeRef>SubProcess_1i5zb43</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
+    <bpmn:sequenceFlow id="SequenceFlow_01cf3pg" sourceRef="Task_0wvh5hg" targetRef="Task_0yohom1" />
     <bpmn:sequenceFlow id="SequenceFlow_149hmj5" sourceRef="Task_02hjkpo" targetRef="ExclusiveGateway_15qw2e4" />
     <bpmn:sequenceFlow id="SequenceFlow_0kfa3yc" sourceRef="IntermediateThrowEvent_0ufqvqv" targetRef="Task_02hjkpo" />
     <bpmn:sequenceFlow id="SequenceFlow_10w6rxm" name="yes" sourceRef="ExclusiveGateway_15qw2e4" targetRef="Task_0re7pte">
@@ -75,7 +77,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_0mmheow" sourceRef="IntermediateThrowEvent_1y3qrfe" targetRef="Task_0p50qny" />
     <bpmn:sequenceFlow id="SequenceFlow_1yoyk3m" sourceRef="IntermediateThrowEvent_1wjkfhq" targetRef="Task_0yzu7q9" />
     <bpmn:sequenceFlow id="SequenceFlow_1ddnsb8" sourceRef="Task_0re7pte" targetRef="IntermediateThrowEvent_1wjkfhq" />
-    <bpmn:sequenceFlow id="SequenceFlow_04nhfk9" sourceRef="ExclusiveGateway_0c7f63v" targetRef="Task_0yohom1" />
+    <bpmn:sequenceFlow id="SequenceFlow_04nhfk9" sourceRef="ExclusiveGateway_0c7f63v" targetRef="Task_0wvh5hg" />
     <bpmn:sequenceFlow id="SequenceFlow_0v91uzr" name="yes" sourceRef="ExclusiveGateway_1pdrg9l" targetRef="ExclusiveGateway_0c7f63v">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${samplesOk}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
@@ -126,153 +128,106 @@
     <bpmn:sequenceFlow id="SequenceFlow_1ijmpi1" sourceRef="ExclusiveGateway_091self" targetRef="Task_1pywh3v" />
     <bpmn:sequenceFlow id="SequenceFlow_0e3xaoi" sourceRef="Task_0p82m1u" targetRef="ExclusiveGateway_091self" />
     <bpmn:sequenceFlow id="SequenceFlow_0bhdklg" sourceRef="Task_1mk24c1" targetRef="ExclusiveGateway_091self" />
-    <bpmn:parallelGateway id="ExclusiveGateway_091self">
-      <bpmn:incoming>SequenceFlow_0e3xaoi</bpmn:incoming>
-      <bpmn:incoming>SequenceFlow_0bhdklg</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1ijmpi1</bpmn:outgoing>
-    </bpmn:parallelGateway>
-    <bpmn:endEvent id="EndEvent_09rsmph">
-      <bpmn:incoming>SequenceFlow_1rx52z3</bpmn:incoming>
+    <bpmn:sequenceFlow id="SequenceFlow_1irtf50" sourceRef="Task_0yzu7q9" targetRef="Task_09mq293" />
+    <bpmn:boundaryEvent id="IntermediateThrowEvent_15yvtip" name="5 Days" attachedToRef="Task_0yzu7q9">
+      <bpmn:outgoing>SequenceFlow_1nabbut</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_191hjew">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P5D</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:boundaryEvent>
+    <bpmn:task id="Task_117wa3q" name="Meet Customer">
+      <bpmn:incoming>SequenceFlow_0otmb4d</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_17zzcuu</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_04x32c5">
+      <bpmn:incoming>SequenceFlow_0iwm3xi</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1rx52z3</bpmn:outgoing>
+      <bpmn:messageEventDefinition camunda:expression="${messageSender.sendMeetingRequest()}" />
+    </bpmn:intermediateThrowEvent>
+    <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_1aimhz8">
+      <bpmn:incoming>SequenceFlow_0578tre</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0otmb4d</bpmn:outgoing>
+      <bpmn:messageEventDefinition camunda:expression="${messageSender.sendMeetingRequest()}" />
+    </bpmn:intermediateThrowEvent>
+    <bpmn:endEvent id="EndEvent_03b6i1h">
+      <bpmn:incoming>SequenceFlow_0k8qpv4</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:exclusiveGateway id="ExclusiveGateway_0qvxdcs" name="Request feasibility?">
-      <bpmn:incoming>SequenceFlow_1yqqmu3</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_02pgxfe</bpmn:outgoing>
-      <bpmn:outgoing>SequenceFlow_0iwm3xi</bpmn:outgoing>
-      <bpmn:outgoing>SequenceFlow_0578tre</bpmn:outgoing>
+    <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_0iq63nj">
+      <bpmn:incoming>SequenceFlow_19zgad3</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0la452o</bpmn:outgoing>
+      <bpmn:messageEventDefinition messageRef="Message_0b628i7" camunda:expression="${messageSender.sendSamples(execution)}" />
+    </bpmn:intermediateThrowEvent>
+    <bpmn:exclusiveGateway id="ExclusiveGateway_0c7f63v">
+      <bpmn:incoming>SequenceFlow_0v91uzr</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1boluhs</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_04nhfk9</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:businessRuleTask id="Task_0yunppz" name="Decide feasibilty" camunda:resultVariable="feasibility" camunda:decisionRef="Decision_0cx04wk" camunda:mapDecisionResult="singleEntry">
-      <bpmn:extensionElements>
-        <camunda:inputOutput>
-          <camunda:inputParameter name="projectSource">${feasibilityFactors.get(0)}</camunda:inputParameter>
-          <camunda:inputParameter name="projectType">${feasibilityFactors.get(1)}</camunda:inputParameter>
-          <camunda:inputParameter name="targetBackground">${feasibilityFactors.get(2)}</camunda:inputParameter>
-          <camunda:outputParameter name="Output_3e4t1me" />
-        </camunda:inputOutput>
-      </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_19an0ff</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1yqqmu3</bpmn:outgoing>
-    </bpmn:businessRuleTask>
-    <bpmn:businessRuleTask id="Task_1hz6606" name="Define Project Type" camunda:resultVariable="projectProcess" camunda:decisionRef="Decision_1ognlc7" camunda:mapDecisionResult="singleEntry">
-      <bpmn:extensionElements>
-        <camunda:inputOutput>
-          <camunda:inputParameter name="projectType">${execution.getVariable("projectType")}</camunda:inputParameter>
-        </camunda:inputOutput>
-      </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_17zzcuu</bpmn:incoming>
-      <bpmn:incoming>SequenceFlow_02pgxfe</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0qz5chr</bpmn:outgoing>
-    </bpmn:businessRuleTask>
-    <bpmn:userTask id="Task_07842in" name="Order Mice" camunda:assignee="demo" camunda:candidateUsers="demo">
-      <bpmn:extensionElements>
-        <camunda:taskListener expression="${taskAssignedListener.orderMiceListener(task)}" event="create" />
-      </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_16iszvn</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0usbs3a</bpmn:outgoing>
-    </bpmn:userTask>
-    <bpmn:userTask id="Task_12yz357" name="Update Injection/ Electroporation data">
-      <bpmn:extensionElements>
-        <camunda:taskListener expression="${taskAssignedListener.updateInjectionDataListener(task)}" event="create" />
-      </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_0uy6q3f</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0a23hy3</bpmn:outgoing>
-      <bpmn:dataOutputAssociation id="DataOutputAssociation_0n4rt24">
-        <bpmn:targetRef>DataStoreReference_0ja58oi</bpmn:targetRef>
-      </bpmn:dataOutputAssociation>
-    </bpmn:userTask>
-    <bpmn:userTask id="Task_0f0eepw" name="Update Injection/ Electroporation data" camunda:assignee="demo" camunda:candidateUsers="demo">
-      <bpmn:extensionElements>
-        <camunda:taskListener expression="${taskAssignedListener.updateInjectionDataListener(task)}" event="create" />
-      </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_009wew0</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_01bx2qm</bpmn:outgoing>
-      <bpmn:dataOutputAssociation id="DataOutputAssociation_04ezbsa">
-        <bpmn:targetRef>DataStoreReference_0ja58oi</bpmn:targetRef>
-      </bpmn:dataOutputAssociation>
-    </bpmn:userTask>
-    <bpmn:manualTask id="Task_0p82m1u" name="Prepare Embryos">
-      <bpmn:incoming>SequenceFlow_106ss8c</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0e3xaoi</bpmn:outgoing>
-    </bpmn:manualTask>
-    <bpmn:manualTask id="Task_1pywh3v" name="Inject/Electroporate Embryos">
-      <bpmn:incoming>SequenceFlow_1ijmpi1</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_009wew0</bpmn:outgoing>
-    </bpmn:manualTask>
-    <bpmn:userTask id="Task_1mk24c1" name="Record Injection/ Electroporation data" camunda:assignee="demo" camunda:candidateUsers="demo">
-      <bpmn:extensionElements>
-        <camunda:taskListener expression="${taskAssignedListener.recordInjectionDataListener(task)}" event="create" />
-      </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_0kamqlh</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0bhdklg</bpmn:outgoing>
-      <bpmn:dataOutputAssociation id="DataOutputAssociation_0w4qkvc">
-        <bpmn:targetRef>DataStoreReference_0ja58oi</bpmn:targetRef>
-      </bpmn:dataOutputAssociation>
-    </bpmn:userTask>
-    <bpmn:manualTask id="Task_0x8e0na" name="Transfer Embryos">
-      <bpmn:incoming>SequenceFlow_01bx2qm</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0uy6q3f</bpmn:outgoing>
-    </bpmn:manualTask>
-    <bpmn:intermediateCatchEvent id="IntermediateThrowEvent_0ufqvqv" name="3 Weeks">
-      <bpmn:incoming>SequenceFlow_0a23hy3</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0kfa3yc</bpmn:outgoing>
+    <bpmn:intermediateCatchEvent id="IntermediateThrowEvent_1wjkfhq" name="5 Days">
+      <bpmn:incoming>SequenceFlow_1ddnsb8</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1yoyk3m</bpmn:outgoing>
       <bpmn:timerEventDefinition>
         <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P0DT3S</bpmn:timeDuration>
       </bpmn:timerEventDefinition>
     </bpmn:intermediateCatchEvent>
-    <bpmn:task id="Task_0xls4gn" name="Receive Reagents">
-      <bpmn:incoming>SequenceFlow_04lgub7</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1yq51ws</bpmn:outgoing>
-    </bpmn:task>
-    <bpmn:dataStoreReference id="DataStoreReference_0ja58oi" name="Project DB" />
-    <bpmn:parallelGateway id="ExclusiveGateway_1ris650">
-      <bpmn:incoming>SequenceFlow_0usbs3a</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0q6nwqv</bpmn:outgoing>
-      <bpmn:outgoing>SequenceFlow_106ss8c</bpmn:outgoing>
-    </bpmn:parallelGateway>
-    <bpmn:userTask id="Task_0j49vmt" name="Plan Mice" camunda:formKey="embedded:app:forms/plan-mice.html" camunda:assignee="demo" camunda:candidateUsers="demo">
+    <bpmn:intermediateCatchEvent id="IntermediateThrowEvent_1y3qrfe">
+      <bpmn:incoming>SequenceFlow_0la452o</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0mmheow</bpmn:outgoing>
+      <bpmn:messageEventDefinition messageRef="Message_0ur62em" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:exclusiveGateway id="ExclusiveGateway_1pdrg9l" name="Results positive?">
+      <bpmn:incoming>SequenceFlow_0qqko12</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1ra7dpz</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0v91uzr</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:manualTask id="Task_0yohom1" name="Send Mice">
+      <bpmn:incoming>SequenceFlow_01cf3pg</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0k8qpv4</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:manualTask id="Task_09mq293" name="Take Samples (Toetips)">
+      <bpmn:incoming>SequenceFlow_1nabbut</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1irtf50</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_016guw3</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:userTask id="Task_1ci8off" name="Record Samples">
       <bpmn:extensionElements>
-        <camunda:taskListener expression="${taskAssignedListener.planMiceListener(task)}" event="create" />
+        <camunda:taskListener expression="${taskAssignedListener.recordSamplesListener(task)}" event="create" />
       </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_1yq51ws</bpmn:incoming>
-      <bpmn:incoming>SequenceFlow_1ra7dpz</bpmn:incoming>
-      <bpmn:incoming>SequenceFlow_1fzxaf8</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_16iszvn</bpmn:outgoing>
-      <bpmn:dataOutputAssociation id="DataOutputAssociation_008d9bx">
+      <bpmn:incoming>SequenceFlow_016guw3</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_19zgad3</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_0x2rqq8">
         <bpmn:targetRef>DataStoreReference_0ja58oi</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
     </bpmn:userTask>
-    <bpmn:manualTask id="Task_1qr8jx0" name="Prepare Injection/ Electroporation Reagents">
-      <bpmn:incoming>SequenceFlow_0q6nwqv</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0kamqlh</bpmn:outgoing>
-    </bpmn:manualTask>
-    <bpmn:exclusiveGateway id="ExclusiveGateway_0unitaq" name="Project Type?">
-      <bpmn:incoming>SequenceFlow_0qz5chr</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1h7llp9</bpmn:outgoing>
-      <bpmn:outgoing>SequenceFlow_1b4gtxh</bpmn:outgoing>
-    </bpmn:exclusiveGateway>
-    <bpmn:serviceTask id="Task_0sgsb4w" name="Order Reagents" camunda:expression="${database.doNothing()}">
-      <bpmn:incoming>SequenceFlow_1h7llp9</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_04lgub7</bpmn:outgoing>
-      <bpmn:property id="Property_0uzejwe" name="__targetRef_placeholder" />
-      <bpmn:dataInputAssociation id="DataInputAssociation_0347jyb">
-        <bpmn:sourceRef>DataStoreReference_0ja58oi</bpmn:sourceRef>
-        <bpmn:targetRef>Property_0uzejwe</bpmn:targetRef>
-      </bpmn:dataInputAssociation>
+    <bpmn:serviceTask id="Task_0p50qny" name="Analyse return form" camunda:expression="${database.completeProject(execution)}">
+      <bpmn:incoming>SequenceFlow_0mmheow</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0qqko12</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="Task_07iuh58" name="Register Project" camunda:expression="${database.registerProject(execution, &#34;firstname&#34;, &#34;lastname&#34;, &#34;address&#34;, &#34;phone&#34;, &#34;email&#34;, &#34;institution&#34;, &#34;projectType&#34;, &#34;strain&#34;, &#34;genes&#34;, &#34;providedReagents&#34;)}" camunda:resultVariable="feasibilityFactors">
-      <bpmn:incoming>SequenceFlow_1c3ckaq</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0d7vyx7</bpmn:outgoing>
-      <bpmn:dataOutputAssociation id="DataOutputAssociation_1efgjxk">
+    <bpmn:manualTask id="Task_0yzu7q9" name="Decide to take samples">
+      <bpmn:incoming>SequenceFlow_1yoyk3m</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1irtf50</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:exclusiveGateway id="ExclusiveGateway_15qw2e4" name="Any births?">
+      <bpmn:incoming>SequenceFlow_149hmj5</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1fzxaf8</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_10w6rxm</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="Task_02hjkpo" name="Check for births" camunda:assignee="demo" camunda:candidateUsers="demo">
+      <bpmn:extensionElements>
+        <camunda:taskListener expression="${taskAssignedListener.checkForBirthsListener(task)}" event="create" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0kfa3yc</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_149hmj5</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_0re7pte" name="Record Number of Births" camunda:assignee="demo" camunda:candidateUsers="demo">
+      <bpmn:extensionElements>
+        <camunda:taskListener expression="${taskAssignedListener.recordBirthsListener(task)}" event="create" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_10w6rxm</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1ddnsb8</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_17xtp5a">
         <bpmn:targetRef>DataStoreReference_0ja58oi</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
-    </bpmn:serviceTask>
-    <bpmn:startEvent id="StartEvent_056e8bh" name="Mice order received" camunda:formKey="embedded:app:index.html">
-      <bpmn:outgoing>SequenceFlow_1c3ckaq</bpmn:outgoing>
-      <bpmn:messageEventDefinition messageRef="Message_12u1utv" />
-    </bpmn:startEvent>
-    <bpmn:serviceTask id="Task_0uua9sa" name="Define whether Project is internal or external" camunda:expression="${processUtils.isProjectExternal(execution, &#34;feasibilityFactors&#34;)}" camunda:resultVariable="feasibilityFactors">
-      <bpmn:incoming>SequenceFlow_0d7vyx7</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_19an0ff</bpmn:outgoing>
-    </bpmn:serviceTask>
+    </bpmn:userTask>
     <bpmn:subProcess id="SubProcess_1i5zb43" name="Cryoperservation">
       <bpmn:incoming>SequenceFlow_1b4gtxh</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1boluhs</bpmn:outgoing>
@@ -280,7 +235,7 @@
         <bpmn:outgoing>SequenceFlow_13pld79</bpmn:outgoing>
       </bpmn:startEvent>
       <bpmn:manualTask id="ManualTask_1217azq" name="Carry Out Series">
-        <bpmn:incoming>SequenceFlow_0m34kk1</bpmn:incoming>
+        <bpmn:incoming>SequenceFlow_01ad27e</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_12yoddr</bpmn:outgoing>
       </bpmn:manualTask>
       <bpmn:manualTask id="ManualTask_1daeb7n" name="Validate Series">
@@ -293,7 +248,6 @@
         <bpmn:outgoing>SequenceFlow_04nmnip</bpmn:outgoing>
       </bpmn:exclusiveGateway>
       <bpmn:dataStoreReference id="DataStoreReference_0xhcpov" name="Project DB" />
-      <bpmn:sequenceFlow id="SequenceFlow_0m34kk1" sourceRef="ManualTask_1fl7gtc" targetRef="ManualTask_1217azq" />
       <bpmn:sequenceFlow id="SequenceFlow_12yoddr" sourceRef="ManualTask_1217azq" targetRef="ManualTask_0pn5gby" />
       <bpmn:sequenceFlow id="SequenceFlow_15r9412" sourceRef="ManualTask_0pn5gby" targetRef="ManualTask_1daeb7n" />
       <bpmn:sequenceFlow id="SequenceFlow_0e1rj78" sourceRef="ManualTask_1daeb7n" targetRef="ExclusiveGateway_1lg4c6w" />
@@ -303,7 +257,7 @@
       <bpmn:sequenceFlow id="SequenceFlow_1qk66q8" name="yes" sourceRef="ExclusiveGateway_1lg4c6w" targetRef="EndEvent_0vevrm7">
         <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${x == true}</bpmn:conditionExpression>
       </bpmn:sequenceFlow>
-      <bpmn:sequenceFlow id="SequenceFlow_01ad27e" sourceRef="ManualTask_0b17vou" targetRef="ManualTask_1fl7gtc" />
+      <bpmn:sequenceFlow id="SequenceFlow_01ad27e" sourceRef="ManualTask_0b17vou" targetRef="ManualTask_1217azq" />
       <bpmn:sequenceFlow id="SequenceFlow_04nmnip" name="no" sourceRef="ExclusiveGateway_1lg4c6w" targetRef="ManualTask_0b17vou">
         <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${x == false}</bpmn:conditionExpression>
       </bpmn:sequenceFlow>
@@ -313,10 +267,6 @@
         <bpmn:incoming>SequenceFlow_13pld79</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_01ad27e</bpmn:outgoing>
       </bpmn:userTask>
-      <bpmn:userTask id="ManualTask_1fl7gtc" name="Organise Mice">
-        <bpmn:incoming>SequenceFlow_01ad27e</bpmn:incoming>
-        <bpmn:outgoing>SequenceFlow_0m34kk1</bpmn:outgoing>
-      </bpmn:userTask>
       <bpmn:userTask id="ManualTask_0pn5gby" name="Record ...">
         <bpmn:incoming>SequenceFlow_12yoddr</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_15r9412</bpmn:outgoing>
@@ -325,106 +275,157 @@
         </bpmn:dataOutputAssociation>
       </bpmn:userTask>
     </bpmn:subProcess>
-    <bpmn:userTask id="Task_0re7pte" name="Record Number of Births" camunda:assignee="demo" camunda:candidateUsers="demo">
-      <bpmn:extensionElements>
-        <camunda:taskListener expression="${taskAssignedListener.recordBirthsListener(task)}" event="create" />
-      </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_10w6rxm</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1ddnsb8</bpmn:outgoing>
-      <bpmn:dataOutputAssociation id="DataOutputAssociation_17xtp5a">
-        <bpmn:targetRef>DataStoreReference_0ja58oi</bpmn:targetRef>
-      </bpmn:dataOutputAssociation>
-    </bpmn:userTask>
-    <bpmn:userTask id="Task_02hjkpo" name="Check for births" camunda:assignee="demo" camunda:candidateUsers="demo">
-      <bpmn:extensionElements>
-        <camunda:taskListener expression="${taskAssignedListener.checkForBirthsListener(task)}" event="create" />
-      </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_0kfa3yc</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_149hmj5</bpmn:outgoing>
-    </bpmn:userTask>
-    <bpmn:exclusiveGateway id="ExclusiveGateway_15qw2e4" name="Any births?">
-      <bpmn:incoming>SequenceFlow_149hmj5</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1fzxaf8</bpmn:outgoing>
-      <bpmn:outgoing>SequenceFlow_10w6rxm</bpmn:outgoing>
-    </bpmn:exclusiveGateway>
-    <bpmn:manualTask id="Task_0yzu7q9" name="Decide to take samples">
-      <bpmn:incoming>SequenceFlow_1yoyk3m</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1irtf50</bpmn:outgoing>
-    </bpmn:manualTask>
-    <bpmn:serviceTask id="Task_0p50qny" name="Analyse return form" camunda:expression="${database.completeProject(execution)}">
-      <bpmn:incoming>SequenceFlow_0mmheow</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0qqko12</bpmn:outgoing>
-    </bpmn:serviceTask>
-    <bpmn:userTask id="Task_1ci8off" name="Record Samples">
-      <bpmn:extensionElements>
-        <camunda:taskListener expression="${taskAssignedListener.recordSamplesListener(task)}" event="create" />
-      </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_016guw3</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_19zgad3</bpmn:outgoing>
-      <bpmn:dataOutputAssociation id="DataOutputAssociation_0x2rqq8">
-        <bpmn:targetRef>DataStoreReference_0ja58oi</bpmn:targetRef>
-      </bpmn:dataOutputAssociation>
-    </bpmn:userTask>
-    <bpmn:manualTask id="Task_09mq293" name="Take Samples (Toetips)">
-      <bpmn:incoming>SequenceFlow_1nabbut</bpmn:incoming>
-      <bpmn:incoming>SequenceFlow_1irtf50</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_016guw3</bpmn:outgoing>
-    </bpmn:manualTask>
-    <bpmn:manualTask id="Task_0yohom1" name="Send Mice">
+    <bpmn:sendTask id="Task_0wvh5hg" name="Green light for mice">
       <bpmn:incoming>SequenceFlow_04nhfk9</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0k8qpv4</bpmn:outgoing>
-    </bpmn:manualTask>
-    <bpmn:exclusiveGateway id="ExclusiveGateway_1pdrg9l" name="Results positive?">
-      <bpmn:incoming>SequenceFlow_0qqko12</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1ra7dpz</bpmn:outgoing>
-      <bpmn:outgoing>SequenceFlow_0v91uzr</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_01cf3pg</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:serviceTask id="Task_0uua9sa" name="Define whether Project is internal or external" camunda:expression="${processUtils.isProjectExternal(execution, &#34;feasibilityFactors&#34;)}" camunda:resultVariable="feasibilityFactors">
+      <bpmn:incoming>SequenceFlow_0d7vyx7</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_19an0ff</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:startEvent id="StartEvent_056e8bh" name="Mice order received" camunda:formKey="embedded:app:index.html">
+      <bpmn:outgoing>SequenceFlow_1c3ckaq</bpmn:outgoing>
+      <bpmn:messageEventDefinition messageRef="Message_12u1utv" />
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="Task_07iuh58" name="Register Project" camunda:expression="${database.registerProject(execution, &#34;firstname&#34;, &#34;lastname&#34;, &#34;address&#34;, &#34;phone&#34;, &#34;email&#34;, &#34;institution&#34;, &#34;projectType&#34;, &#34;strain&#34;, &#34;genes&#34;, &#34;providedReagents&#34;)}" camunda:resultVariable="feasibilityFactors">
+      <bpmn:incoming>SequenceFlow_1c3ckaq</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0d7vyx7</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_1efgjxk">
+        <bpmn:targetRef>DataStoreReference_0ja58oi</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Task_0sgsb4w" name="Order Reagents" camunda:expression="${database.doNothing()}">
+      <bpmn:incoming>SequenceFlow_1h7llp9</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_04lgub7</bpmn:outgoing>
+      <bpmn:property id="Property_0uzejwe" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_0347jyb">
+        <bpmn:sourceRef>DataStoreReference_0ja58oi</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0uzejwe</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="ExclusiveGateway_0unitaq" name="Project Type?">
+      <bpmn:incoming>SequenceFlow_0qz5chr</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1h7llp9</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_1b4gtxh</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:intermediateCatchEvent id="IntermediateThrowEvent_1y3qrfe">
-      <bpmn:incoming>SequenceFlow_0la452o</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0mmheow</bpmn:outgoing>
-      <bpmn:messageEventDefinition messageRef="Message_0ur62em" />
-    </bpmn:intermediateCatchEvent>
-    <bpmn:intermediateCatchEvent id="IntermediateThrowEvent_1wjkfhq" name="5 Days">
-      <bpmn:incoming>SequenceFlow_1ddnsb8</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1yoyk3m</bpmn:outgoing>
+    <bpmn:manualTask id="Task_1qr8jx0" name="Prepare Injection/ Electroporation Reagents">
+      <bpmn:incoming>SequenceFlow_0q6nwqv</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0kamqlh</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:userTask id="Task_0j49vmt" name="Plan Mice" camunda:formKey="embedded:app:forms/plan-mice.html" camunda:assignee="demo" camunda:candidateUsers="demo">
+      <bpmn:extensionElements>
+        <camunda:taskListener expression="${taskAssignedListener.planMiceListener(task)}" event="create" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_1yq51ws</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1ra7dpz</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1fzxaf8</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_16iszvn</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_008d9bx">
+        <bpmn:targetRef>DataStoreReference_0ja58oi</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:userTask>
+    <bpmn:parallelGateway id="ExclusiveGateway_1ris650">
+      <bpmn:incoming>SequenceFlow_0usbs3a</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0q6nwqv</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_106ss8c</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:dataStoreReference id="DataStoreReference_0ja58oi" name="Project DB" />
+    <bpmn:task id="Task_0xls4gn" name="Receive Reagents">
+      <bpmn:incoming>SequenceFlow_04lgub7</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1yq51ws</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:intermediateCatchEvent id="IntermediateThrowEvent_0ufqvqv" name="3 Weeks">
+      <bpmn:incoming>SequenceFlow_0a23hy3</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0kfa3yc</bpmn:outgoing>
       <bpmn:timerEventDefinition>
         <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P0DT3S</bpmn:timeDuration>
       </bpmn:timerEventDefinition>
     </bpmn:intermediateCatchEvent>
-    <bpmn:exclusiveGateway id="ExclusiveGateway_0c7f63v">
-      <bpmn:incoming>SequenceFlow_0v91uzr</bpmn:incoming>
-      <bpmn:incoming>SequenceFlow_1boluhs</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_04nhfk9</bpmn:outgoing>
+    <bpmn:manualTask id="Task_0x8e0na" name="Transfer Embryos">
+      <bpmn:incoming>SequenceFlow_01bx2qm</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0uy6q3f</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:userTask id="Task_1mk24c1" name="Record Injection/ Electroporation data" camunda:assignee="demo" camunda:candidateUsers="demo">
+      <bpmn:extensionElements>
+        <camunda:taskListener expression="${taskAssignedListener.recordInjectionDataListener(task)}" event="create" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0kamqlh</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0bhdklg</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_0w4qkvc">
+        <bpmn:targetRef>DataStoreReference_0ja58oi</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:userTask>
+    <bpmn:manualTask id="Task_1pywh3v" name="Inject/Electroporate Embryos">
+      <bpmn:incoming>SequenceFlow_1ijmpi1</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_009wew0</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:manualTask id="Task_0p82m1u" name="Prepare Embryos">
+      <bpmn:incoming>SequenceFlow_106ss8c</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0e3xaoi</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:userTask id="Task_0f0eepw" name="Update Injection/ Electroporation data" camunda:assignee="demo" camunda:candidateUsers="demo">
+      <bpmn:extensionElements>
+        <camunda:taskListener expression="${taskAssignedListener.updateInjectionDataListener(task)}" event="create" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_009wew0</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_01bx2qm</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_04ezbsa">
+        <bpmn:targetRef>DataStoreReference_0ja58oi</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_12yz357" name="Update Injection/ Electroporation data">
+      <bpmn:extensionElements>
+        <camunda:taskListener expression="${taskAssignedListener.updateInjectionDataListener(task)}" event="create" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0uy6q3f</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0a23hy3</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_0n4rt24">
+        <bpmn:targetRef>DataStoreReference_0ja58oi</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_07842in" name="Order Mice" camunda:assignee="demo" camunda:candidateUsers="demo">
+      <bpmn:extensionElements>
+        <camunda:taskListener expression="${taskAssignedListener.orderMiceListener(task)}" event="create" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_16iszvn</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0usbs3a</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:businessRuleTask id="Task_1hz6606" name="Define Project Type" camunda:resultVariable="projectProcess" camunda:decisionRef="Decision_1ognlc7" camunda:mapDecisionResult="singleEntry">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="projectType">${execution.getVariable("projectType")}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_17zzcuu</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_02pgxfe</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0qz5chr</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:businessRuleTask id="Task_0yunppz" name="Decide feasibilty" camunda:resultVariable="feasibility" camunda:decisionRef="Decision_0cx04wk" camunda:mapDecisionResult="singleEntry">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="projectSource">${feasibilityFactors.get(0)}</camunda:inputParameter>
+          <camunda:inputParameter name="projectType">${feasibilityFactors.get(1)}</camunda:inputParameter>
+          <camunda:inputParameter name="targetBackground">${feasibilityFactors.get(2)}</camunda:inputParameter>
+          <camunda:outputParameter name="Output_3e4t1me" />
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_19an0ff</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1yqqmu3</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:exclusiveGateway id="ExclusiveGateway_0qvxdcs" name="Request feasibility?">
+      <bpmn:incoming>SequenceFlow_1yqqmu3</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_02pgxfe</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0iwm3xi</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0578tre</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_0iq63nj">
-      <bpmn:incoming>SequenceFlow_19zgad3</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0la452o</bpmn:outgoing>
-      <bpmn:messageEventDefinition messageRef="Message_0b628i7" camunda:expression="${messageSender.sendSamples(execution)}" />
-    </bpmn:intermediateThrowEvent>
-    <bpmn:endEvent id="EndEvent_03b6i1h">
-      <bpmn:incoming>SequenceFlow_0k8qpv4</bpmn:incoming>
+    <bpmn:endEvent id="EndEvent_09rsmph">
+      <bpmn:incoming>SequenceFlow_1rx52z3</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_1aimhz8">
-      <bpmn:incoming>SequenceFlow_0578tre</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0otmb4d</bpmn:outgoing>
-      <bpmn:messageEventDefinition camunda:expression="${messageSender.sendMeetingRequest()}" />
-    </bpmn:intermediateThrowEvent>
-    <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_04x32c5">
-      <bpmn:incoming>SequenceFlow_0iwm3xi</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1rx52z3</bpmn:outgoing>
-      <bpmn:messageEventDefinition camunda:expression="${messageSender.sendMeetingRequest()}" />
-    </bpmn:intermediateThrowEvent>
-    <bpmn:task id="Task_117wa3q" name="Meet Customer">
-      <bpmn:incoming>SequenceFlow_0otmb4d</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_17zzcuu</bpmn:outgoing>
-    </bpmn:task>
-    <bpmn:sequenceFlow id="SequenceFlow_1irtf50" sourceRef="Task_0yzu7q9" targetRef="Task_09mq293" />
-    <bpmn:boundaryEvent id="IntermediateThrowEvent_15yvtip" name="5 Days" attachedToRef="Task_0yzu7q9">
-      <bpmn:outgoing>SequenceFlow_1nabbut</bpmn:outgoing>
-      <bpmn:timerEventDefinition id="TimerEventDefinition_191hjew">
-        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P5D</bpmn:timeDuration>
-      </bpmn:timerEventDefinition>
-    </bpmn:boundaryEvent>
+    <bpmn:parallelGateway id="ExclusiveGateway_091self">
+      <bpmn:incoming>SequenceFlow_0e3xaoi</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0bhdklg</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1ijmpi1</bpmn:outgoing>
+    </bpmn:parallelGateway>
   </bpmn:process>
   <bpmn:message id="Message_12u1utv" name="transgenic-mice_order-received" />
   <bpmn:message id="Message_0b628i7" name="transgenic_mice_samples" />
@@ -633,9 +634,7 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_04nhfk9_di" bpmnElement="SequenceFlow_04nhfk9">
         <di:waypoint x="4435" y="680" />
-        <di:waypoint x="4560" y="680" />
-        <di:waypoint x="4560" y="1360" />
-        <di:waypoint x="4620" y="1360" />
+        <di:waypoint x="4500" y="680" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_17zzcuu_di" bpmnElement="SequenceFlow_17zzcuu">
         <di:waypoint x="1198" y="320" />
@@ -700,10 +699,6 @@
       <bpmndi:BPMNShape id="ManualTask_1daeb7n_di" bpmnElement="ManualTask_1daeb7n">
         <dc:Bounds x="2380" y="1670" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_0m34kk1_di" bpmnElement="SequenceFlow_0m34kk1">
-        <di:waypoint x="2070" y="1710" />
-        <di:waypoint x="2100" y="1710" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_12yoddr_di" bpmnElement="SequenceFlow_12yoddr">
         <di:waypoint x="2200" y="1710" />
         <di:waypoint x="2240" y="1710" />
@@ -753,7 +748,7 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_01ad27e_di" bpmnElement="SequenceFlow_01ad27e">
         <di:waypoint x="1940" y="1710" />
-        <di:waypoint x="1970" y="1710" />
+        <di:waypoint x="2100" y="1710" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_04nmnip_di" bpmnElement="SequenceFlow_04nmnip">
         <di:waypoint x="2540" y="1735" />
@@ -770,9 +765,6 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="UserTask_13k95hu_di" bpmnElement="ManualTask_0b17vou">
         <dc:Bounds x="1840" y="1670" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="UserTask_195c2p6_di" bpmnElement="ManualTask_1fl7gtc">
-        <dc:Bounds x="1970" y="1670" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="DataOutputAssociation_0ndqhv1_di" bpmnElement="DataOutputAssociation_0ndqhv1">
         <di:waypoint x="2290" y="1670" />
@@ -1000,6 +992,14 @@
         <bpmndi:BPMNLabel>
           <dc:Bounds x="3602" y="1425" width="35" height="14" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_01cf3pg_di" bpmnElement="SequenceFlow_01cf3pg">
+        <di:waypoint x="4550" y="720" />
+        <di:waypoint x="4550" y="1360" />
+        <di:waypoint x="4620" y="1360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="SendTask_16366t0_di" bpmnElement="Task_0wvh5hg">
+        <dc:Bounds x="4500" y="640" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
