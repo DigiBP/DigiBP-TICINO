@@ -71,6 +71,8 @@ public class Database {
 
             execution.setVariable("projectId", projectId);
 
+            con.close();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -88,6 +90,8 @@ public class Database {
             statement.setBoolean(2, !feasible);
             statement.setLong(3, (Long) execution.getVariable("projectId"));
             statement.executeUpdate();
+
+            con.close();
         } catch( Exception e )
         {
             e.printStackTrace();
@@ -117,7 +121,7 @@ public class Database {
                 execution.setVariable("injectionId", generatedKeys.getLong(1));
             }
 
-            
+            con.close();
         } 
         catch( Exception e )
         {
@@ -141,6 +145,7 @@ public class Database {
             statement.setLong(4, (Long) execution.getVariable("injectionId"));
             
             statement.executeUpdate();
+            con.close();
         } 
         catch( Exception e )
         {
@@ -176,6 +181,7 @@ public class Database {
                 statement.setString(3, "female");
                 statement.executeUpdate();
             }
+            con.close();
         } 
         catch( Exception e )
         {
@@ -208,6 +214,7 @@ public class Database {
                     statement.executeUpdate();
                 }
             }
+            con.close();
         } 
         catch( Exception e )
         {
@@ -225,6 +232,8 @@ public class Database {
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setLong(1, (Long) execution.getVariable("projectId"));
             statement.executeUpdate();
+
+            con.close();
         } 
         catch( Exception e )
         {
