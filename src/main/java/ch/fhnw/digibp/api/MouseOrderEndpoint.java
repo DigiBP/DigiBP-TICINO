@@ -37,7 +37,7 @@ public class MouseOrderEndpoint {
         processVars.put("reagent", transgenicMouseRequest.getReagent());
         processVars.put("sequence", transgenicMouseRequest.getSequence());
 
-        processVars.put("url", request.getRequestURL().toString());
+        processVars.put("url", request.getServerName());
 
         processEngine.getRuntimeService().startProcessInstanceByMessage("transgenic-mice_order-received", processVars);
 
