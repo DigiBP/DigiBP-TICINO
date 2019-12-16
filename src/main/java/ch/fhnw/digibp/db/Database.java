@@ -15,6 +15,8 @@ import java.util.Map;
 
 import javax.inject.Named;
 
+import com.zaxxer.hikari.HikariDataSource;
+
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -26,11 +28,13 @@ public class Database {
     @Autowired
 	private DatabaseProperties dbProperties;
 
+    @Autowired
+    private HikariDataSource dataSource;
+
     public void registerProject(DelegateExecution execution) {
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection( dbProperties.getConnection() );
+            Connection con = dataSource.getConnection();
 
             String sql = "INSERT INTO customer(firstname, lastname, address, zip, place, phone, email, institution) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -81,8 +85,7 @@ public class Database {
     public void updateProject( DelegateExecution execution, boolean feasible )
     {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection( dbProperties.getConnection() );
+            Connection con = dataSource.getConnection();
 
             String sql = "UPDATE project SET feasible = ?, completed = ? WHERE id = ?";
             PreparedStatement statement = con.prepareStatement(sql);
