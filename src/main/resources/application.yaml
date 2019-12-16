@@ -11,6 +11,11 @@ camunda:
 spring:
   profiles:
     active: local
+  datasource:
+    url: jdbc:mysql://n7qmaptgs6baip9z.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/sd104zmnv09fsqm0
+    username: g65mtwvif31z21d8
+    password: qjeu52xomwxxzd6o
+    max-active: 5
 
 database:
   connection: jdbc:mysql://g65mtwvif31z21d8:h30tstvleaybl3hd@n7qmaptgs6baip9z.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/sd104zmnv09fsqm0
