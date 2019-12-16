@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0z420j8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.3.4">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0z420j8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.3.5">
   <bpmn:collaboration id="Collaboration_148g16j">
     <bpmn:participant id="Participant_101iy09" name="Customer" />
     <bpmn:participant id="Participant_1dna8yn" name="Transgenic Facility" processRef="Process_0zbty9s" />
@@ -110,7 +110,7 @@
         <bpmn:incoming>SequenceFlow_0m34kk1</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_12yoddr</bpmn:outgoing>
       </bpmn:manualTask>
-      <bpmn:manualTask id="ManualTask_0pn5gby" name="Record ...">
+      <bpmn:manualTask id="ManualTask_0pn5gby" name="Record Samples (Tubes)">
         <bpmn:incoming>SequenceFlow_12yoddr</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_15r9412</bpmn:outgoing>
         <bpmn:dataOutputAssociation id="DataOutputAssociation_0uwdzqe">

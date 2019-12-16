@@ -166,7 +166,7 @@ public class Database {
             int femaleBirths = (Integer) execution.getVariable("femaleBirths");
 
             String sql = "INSERT INTO mouse(project_id, birthdate, sex) VALUES(  ?, ?, ? )";
-            PreparedStatement statement = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            PreparedStatement statement = con.prepareStatement(sql);
             statement.setLong(1, (Long) execution.getVariable("projectId"));
             statement.setDate(2, java.sql.Date.valueOf(birthdate));
             
@@ -200,7 +200,7 @@ public class Database {
             Map<Integer, List<Integer>> sampleData = (Map<Integer, List<Integer>>) execution.getVariable("sampleData");
 
             String sql = "INSERT INTO biopsy(project_id, mouse_id, biopsy_id, biopsy_date) VALUES( ?, ?, ?, ? )";
-            PreparedStatement statement = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            PreparedStatement statement = con.prepareStatement(sql);
             statement.setLong(1, (Long) execution.getVariable("projectId"));
             statement.setDate(4, java.sql.Date.valueOf(biopsydate));
             
@@ -229,6 +229,59 @@ public class Database {
             String sql = "UPDATE project SET completed = 1 WHERE id = ?";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setLong(1, (Long) execution.getVariable("projectId"));
+            statement.executeUpdate();
+
+            con.close();
+        } 
+        catch( Exception e )
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void recordCryopreservationSeries( DelegateExecution execution )
+    {
+        try {
+            Connection con = dataSource.getConnection();
+
+            String sql = "INSERT INTO sample(name, strain, background, breeding) VALUES (?, ?, ?, ?)";
+            PreparedStatement statement = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            statement.setString(1, (String) execution.getVariable("sampleName"));
+            statement.setString(2, (String) execution.getVariable("strain"));
+            statement.setString(3, (String) execution.getVariable("background"));
+            statement.setString(4, (String) execution.getVariable("breeding"));
+            statement.executeUpdate();
+
+            ResultSet generatedKeys = statement.getGeneratedKeys();
+            long sampleId = 0;
+            if (generatedKeys.next()) {
+                sampleId = generatedKeys.getLong(1);
+            }
+
+            sql = "INSERT INTO freezing_tube(project_id, sample_id, freezing_date) VALUES (?, ?, ?)";
+            statement = con.prepareStatement(sql);
+            statement.setLong(1, (Long) execution.getVariable("projectId"));
+            statement.setLong(2, sampleId);
+            statement.setDate(3, java.sql.Date.valueOf(LocalDate.now()));
+            statement.executeUpdate();
+
+            con.close();
+        } 
+        catch( Exception e )
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateCryopreservationSeries( DelegateExecution execution )
+    {
+        try {
+            Connection con = dataSource.getConnection();
+
+            String sql = "UPDATE freezing_tube SET validation_date = ? WHERE project_id = ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setDate(1, java.sql.Date.valueOf(LocalDate.now()));
+            statement.setLong(2, (Long) execution.getVariable("projectId"));
             statement.executeUpdate();
 
             con.close();

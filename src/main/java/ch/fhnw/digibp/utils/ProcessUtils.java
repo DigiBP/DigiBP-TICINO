@@ -13,8 +13,8 @@ class ProcessUtils {
         execution.setVariable("isProjectInternal", email.toLowerCase().contains("fhnw") ? "Internal" : "External");
     }
 
-    public void analyseSampleForm( DelegateExecution execution )
+    public boolean doNothing( )
     {
-        boolean samplesOk = (boolean) execution.getVariable("samplesOk");
+        return true;
     }
 }

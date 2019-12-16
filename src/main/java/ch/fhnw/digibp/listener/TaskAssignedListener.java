@@ -131,4 +131,38 @@ class TaskAssignedListener extends MessageSender {
             e.printStackTrace();
         }
     }
+
+    public void enterCryoSampleDataListener(DelegateTask task)
+    {
+        try {
+			// subject
+            msg.setSubject("Enter Sample data");
+			
+			// content 
+            msg.setText("Please record the data for the samples for the Project with the ID: " + task.getVariable("projectId") +
+                " by using the following form: " + task.getVariable("url") + "/forms/cryo-sample-data.html?taskId=" + task.getId() + "&processInstance=" + task.getProcessInstanceId());
+			
+            sendMessage( "employee@fhnw.ch" );
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void validateCryoSeriesListener(DelegateTask task)
+    {
+        try {
+			// subject
+            msg.setSubject("Confirm validation");
+			
+			// content 
+            msg.setText("Please validate the series for the Project with the ID: " + task.getVariable("projectId") +
+                " on the following page: " + task.getVariable("url") + "/forms/cryo-series-validation.html?taskId=" + task.getId() + "&processInstance=" + task.getProcessInstanceId());
+			
+            sendMessage( "employee@fhnw.ch" );
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
 }
