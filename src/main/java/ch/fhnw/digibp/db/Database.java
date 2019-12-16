@@ -107,8 +107,7 @@ public class Database {
             LocalDate injectionDate = convertStringToDate( (String) execution.getVariable("injectionDate") );
             injectionDate = injectionDate.plusDays(1); //TODO check if still needed after deployment
 
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection( dbProperties.getConnection() );
+            Connection con = dataSource.getConnection();
 
             String sql = "INSERT INTO injection(project_id, injection_date, embryos_injected, surrogates) VALUES( ?, ?, ?, ? )";
             PreparedStatement statement = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -135,8 +134,7 @@ public class Database {
     public void updateInjectionData( DelegateExecution execution )
     {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection( dbProperties.getConnection() );
+            Connection con = dataSource.getConnection();
 
             LocalDate transferDate = convertStringToDate( (String) execution.getVariable("transferDate") );
 
@@ -162,8 +160,7 @@ public class Database {
         {
             LocalDate birthdate = convertStringToDate( (String) execution.getVariable("birthdate") );
 
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection( dbProperties.getConnection() );
+            Connection con = dataSource.getConnection();
 
             int maleBirths = (Integer) execution.getVariable("maleBirths");
             int femaleBirths = (Integer) execution.getVariable("femaleBirths");
@@ -198,8 +195,7 @@ public class Database {
         {
             LocalDate biopsydate = convertStringToDate( (String) execution.getVariable("biopsydate") );
 
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection( dbProperties.getConnection() );
+            Connection con = dataSource.getConnection();
 
             Map<Integer, List<Integer>> sampleData = (Map<Integer, List<Integer>>) execution.getVariable("sampleData");
 
@@ -228,8 +224,7 @@ public class Database {
     public void completeProject( DelegateExecution execution )
     {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection( dbProperties.getConnection() );
+            Connection con = dataSource.getConnection();
 
             String sql = "UPDATE project SET completed = 1 WHERE id = ?";
             PreparedStatement statement = con.prepareStatement(sql);
