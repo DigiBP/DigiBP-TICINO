@@ -5,7 +5,10 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core">>
 <head>
     <title>Transgenic Mice Process</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,7 +46,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   
 	<div class="main-w3layouts wrapper">
     <div class="container-fluid">
-      <h1>Confirm Samples</h1>
+      <h1>Confirm Project Feasibility</h1>
       <div class="main-agileinfo">
         <div class="agileits-top">
           <div class="row">
@@ -54,13 +57,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               Customer: <p id="customerInfo"></p>
             </div>
           </div>
-          <form id="sampleConfirmForm">
-            <input type="hidden" id="processInstance" name="processInstance" />
-            <input type="hidden" id="sampleResult" name="sampleResult" />
-            <h3>Are the samples ok?</h3>
+          <form id="formConfirmFeasibility">
+            <input type="hidden" id="taskId" name="taskId" />
+            <input type="hidden" id="feasibility" name="feasibility" />
+            <div class="form-group text-center">
+            </div>
+            <h3>Is the project feasible?</h3>
             <div class="row">
-              <button id="sampleNegative" class="btn btn-danger col-lg-4 offset-lg-1">NO</button>
-              <button id="samplePositive" class="btn btn-success col-lg-4 offset-lg-1">YES</button>
+              <button id="projectInfeasible" class="btn btn-danger col-lg-4 offset-lg-1">NO</button>
+              <button id="projectFeasible" class="btn btn-success col-lg-4 offset-lg-1">YES</button>
             </div>
           </form>
         </div>
@@ -89,63 +94,67 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script type="text/javascript" src="../assets/js/app.js"></script>
-    <script type="text/javascript">
-      $(document).ready(() => {
+
+  <script type="text/javascript">
+    $(document).ready(() => {
+
+      var url = new URL(window.location.href);
+      var processInstance = url.searchParams.get("processInstance");
+
+      $.ajax({
+        type: "GET",
+        url: "/rest/engine/default/process-instance/" + processInstance + "/variables",
+        success: function (data, textStatus, response) {
+          $('#projectInfo').html(
+            'Project-Id: ' + data.projectId.value + '<br>'
+            + 'Background: ' + data.background.value + '<br>'
+            + 'Type: ' + data.projectType.value + '<br>'
+            + 'Reagent: ' + data.reagent.value + '<br>'
+            + 'Sequence: ' + data.sequence.value
+          );
+
+          $('#customerInfo').html(
+            data.firstname.value + ' ' + data.lastname.value + '<br>'
+            + data.address.value + '<br>'
+            + data.zip.value + ' ' + data.place.value + '<br>'
+            + data.email.value + '<br>'
+            + 'Institution: ' + data.institution.value
+          );
+        }
+      });
+
+      $('#projectFeasible').click(function() {
+        $('#feasibility').val(true);
+      });
+
+      $('#projectInfeasible').click(function() {
+          $('#feasibility').val(false);
+      });
+
+      $("#formConfirmFeasibility").submit(function (event) {
+        event.preventDefault();
+        
         var url = new URL(window.location.href);
-        var processInstance = url.searchParams.get("processInstance");
-
+        $('#taskId').val(url.searchParams.get("taskId"));
         $.ajax({
-          type: "GET",
-          url: "/rest/engine/default/process-instance/" + processInstance + "/variables",
-          success: function (data, textStatus, response) {
-            $('#projectInfo').html(
-              'Project-Id: ' + data.projectId.value + '<br>'
-              + 'Background: ' + data.background.value + '<br>'
-              + 'Type: ' + data.projectType.value + '<br>'
-              + 'Reagent: ' + data.reagent.value + '<br>'
-              + 'Sequence: ' + data.sequence.value
-            );
-
-            $('#customerInfo').html(
-              data.firstname.value + ' ' + data.lastname.value + '<br>'
-              + data.address.value + '<br>'
-              + data.zip.value + ' ' + data.place.value + '<br>'
-              + data.email.value + '<br>'
-              + 'Institution: ' + data.institution.value
-            );
-          }
-        });
-
-        $('#samplePositive').click(function() {
-          $('#sampleResult').val(true);
-        });
-
-        $('#sampleNegative').click(function() {
-            $('#sampleResult').val(false);
-        });
-
-        $("#sampleConfirmForm").submit(function (event) {
-          event.preventDefault();
-          $('#processInstance').val(processInstance);
-          $.ajax({
             type: "POST",
             processData: false,
             contentType: false,
-            url: "/confirm-samples",
+            url: "/project-feasibility",
             data: new FormData(this),
             success: function (data, textStatus, response) {
-              $('#modal-title').html('Thank you for your answer!');
-              //$('#modal-content').html('!');
-              $('#order-response').modal();
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-              $('#modal-title').html('Something went wrong');
-              $('#modal-content').html('Please try again in a few minutes');
-              $('#order-response').modal();
-            }
-          });
+                    $('#modal-title').html('Update Successful');
+                    //$('#modal-content').html('!');
+                    $('#order-response').modal();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $('#modal-title').html('Something went wrong');
+                    $('#modal-content').html('Please try again in a few minutes');
+                    $('#order-response').modal();
+                }
         });
-      })
-    </script>
-  </body>
+      });
+    });
+  </script>
+</body>
 </html>

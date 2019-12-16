@@ -34,7 +34,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           <span id="modal-content"></span>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -56,6 +56,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           <div class="form-group">
               <input class="text" type="text" name="address" placeholder="Address" required>  
           </div>
+          <div class="row">
+            <div class="form-group col-lg-4">
+              <input class="text" type="text" id="zip" name="zip" placeholder="ZIP" required>  
+            </div>
+            <div class="form-group col-lg-8">
+              <input class="text" type="text" name="place" placeholder="Place" required>  
+            </div>
+          </div>
           <div class="form-group">
               <input class="text" type="text" name="phone" placeholder="Phone" required>  
           </div>        
@@ -66,8 +74,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               <input class="text" type="text" name="institution" placeholder="Institution" required>  
           </div>
           <div class="selectdiv form-group">
-            <select name="projectType">
-              <option>Project Type</option>
+            <select name="projectType" id="projectType">
+              <option value="0">Project Type</option>
               <option>Knock-In</option>
               <option>Knock-Out</option>
               <option>Transgenic</option>
@@ -76,29 +84,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </select>
           </div>
           <div class="selectdiv form-group">
-            <select name="background">
-              <option>Background</option>
+            <select name="background" id="background">
+              <option value="0">Background</option>
               <option>C57BL/6j</option>
               <option>FVB</option>
               <option>Balb/c</option>
               <option>Other</option>
             </select>
           </div>
-          <div class="wthree-text">
-            <label>Requested Reagents:</label>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input checkbox" type="checkbox" id="crRNA" name="reagents" value="crRNA">
-              <label class="form-check-label" for="crRNA">crRNA</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input checkbox" type="checkbox" id="Ultramer" name="reagents" value="Ultramer">
-              <label class="form-check-label" for="Ultramer">Ultramer</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input checkbox" type="checkbox" id="Plasmid" name="reagents" value="Plasmid">
-              <label class="form-check-label" for="Plasmid">Plasmid</label>
-            </div>
-						<div class="clear"> </div>
+          <div class="selectdiv form-group">
+            <select name="reagent" id="reagent">
+              <option value="0">Reagent</option>
+              <option>crRNA</option>
+              <option>Ultramer</option>
+              <option>Plasmid</option>
+              <option>Other</option>
+            </select>
           </div>
           <div class="form-group">
               <input class="text" type="text" name="sequence" placeholder="Sequence" required>  

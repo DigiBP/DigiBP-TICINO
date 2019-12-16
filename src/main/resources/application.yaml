@@ -11,16 +11,13 @@ camunda:
 spring:
   profiles:
     active: local
-#  datasource:
-#    url: jdbc:h2:file:./data/camunda
-#    username: sa
-#    password: sa
-## Uncomment the following lines to enable the h2 DB console:
-#  h2:
-#    console:
-#      enabled: true
-#      path: /console
 
-## Uncomment the following lines to change to port number:
-#server:
-#  port: 8081
+database:
+  connection: jdbc:mysql://g65mtwvif31z21d8:deoa5ltibxjdp6vm@n7qmaptgs6baip9z.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/sd104zmnv09fsqm0
+
+mail:
+  server: smtp.mailtrap.io
+  username: f1854b4a218597
+  password: 253400f50c8907
+  sender: transgenic.lab@fhnw.ch
+  

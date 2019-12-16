@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.camunda.bpm.engine.ProcessEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,53 +21,45 @@ public class MouseOrderEndpoint {
     private ProcessEngine processEngine;
 
     @PostMapping(path = "/order")
-    public void postOrder(@ModelAttribute TransgenicMouseRequest transgenicMouseRequest) {
+    public boolean postOrder(@ModelAttribute TransgenicMouseRequest transgenicMouseRequest, HttpServletRequest request) {
         Map<String, Object> processVars = new HashMap<>();
         processVars.put("firstname", transgenicMouseRequest.getFirstname());
         processVars.put("lastname", transgenicMouseRequest.getLastname());
         processVars.put("address", transgenicMouseRequest.getAddress());
+        processVars.put("zip", transgenicMouseRequest.getZip());
+        processVars.put("place", transgenicMouseRequest.getPlace());
         processVars.put("phone", transgenicMouseRequest.getPhone());
         processVars.put("email", transgenicMouseRequest.getEmail());
         processVars.put("institution", transgenicMouseRequest.getInstitution());
+
         processVars.put("projectType", transgenicMouseRequest.getProjectType());
-        processVars.put("strain", transgenicMouseRequest.getStrain());
-        //processVars.put("genes", transgenicMouseRequest.getGenes());
-        processVars.put("reagents", transgenicMouseRequest.getReagents());
+        processVars.put("background", transgenicMouseRequest.getBackground());
+        processVars.put("reagent", transgenicMouseRequest.getReagent());
+        processVars.put("sequence", transgenicMouseRequest.getSequence());
+
+        processVars.put("url", request.getLocalName());
 
         processEngine.getRuntimeService().startProcessInstanceByMessage("transgenic-mice_order-received", processVars);
+
+        return true;
     }
 
     private static class TransgenicMouseRequest {
         private String firstname;
         private String lastname;
         private String address;
+        private int zip;
+        private String place;
         private String phone;
         private String email;
         private String institution;
         private String projectType;
-        private String strain;
-        private List<String> genes;
-        private List<String> reagents;
+        private String background;
+        private String reagent;
         private String sequence;
 
         public void setFirstname(String firstname) {
             this.firstname = firstname;
-        }
-
-        public List<String> getReagents() {
-            return reagents;
-        }
-
-        public void setReagents(List<String> reagents) {
-            this.reagents = reagents;
-        }
-
-        public List<String> getGenes() {
-            return genes;
-        }
-
-        public void setGenes(List<String> genes) {
-            this.genes = genes;
         }
 
         public String getFirstname() {
@@ -86,6 +80,24 @@ public class MouseOrderEndpoint {
 
         public String getAddress() {
             return address;
+        }
+
+        public void setZip( int zip ) 
+        {
+            this.zip = zip;
+        }
+
+        public int getZip()
+        {
+            return zip;
+        }
+
+        public void setPlace( String place ) {
+            this.place = place;
+        }
+
+        public String getPlace() {
+            return place;
         }
 
         public void setPhone( String phone ) {
@@ -120,12 +132,12 @@ public class MouseOrderEndpoint {
             return projectType;
         }
 
-        public void setStrain( String strain ) {
-            this.strain = strain;
+        public void setBackground( String background ) {
+            this.background = background;
         }
 
-        public String getStrain() {
-            return strain;
+        public String getBackground() {
+            return background;
         }
 
         public String getSequence() {
@@ -134,6 +146,14 @@ public class MouseOrderEndpoint {
 
         public void setSequence( String sequence ) {
             this.sequence = sequence;
+        }
+
+        public String getReagent() {
+            return reagent;
+        }
+
+        public void setReagent(String reagent) {
+            this.reagent = reagent;
         }
     }
 }

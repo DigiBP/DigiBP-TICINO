@@ -1,34 +1,154 @@
+<!--
+Author: Colorlib
+Author URL: https://colorlib.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Transgenic Mice</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../assets/css/style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <div id="mouse-container"><img src="../assets/img/mouse.jpg" class="img-fluid rounded banner" alt="Mouse" /></div>
-      <div class="card">
-        <div class="card-body">
-          <h2 class="text-center card-title">Have there been any births?</h2>
-          <form id="birthCheckForm" class="text-center">
+<head>
+    <title>Transgenic Mice Process</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Custom Theme files -->
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- web font -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- //web font -->
+</head>
+<body>
+  <!-- Modal -->
+  <div class="modal fade" id="order-response" tabindex="-1" role="dialog" aria-labelledby="order-response-label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-title"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <span id="modal-content"></span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- main -->
+  
+	<div class="main-w3layouts wrapper">
+    <div class="container-fluid">
+      <h1>Confirm Birth of Mice</h1>
+      <div class="main-agileinfo">
+        <div class="agileits-top">
+          <div class="row">
+            <div id="project" class="col-lg-5 p-0">
+                Project: <p id="projectInfo"></p>
+            </div>
+            <div id="customer" class="col-lg-5 p-0">
+              Customer: <p id="customerInfo"></p>
+            </div>
+          </div>
+          <form id="birthCheckForm">
             <input type="hidden" id="taskId" name="taskId" />
             <input type="hidden" id="birth" name="birth" />
             <div class="form-group text-center">
             </div>
-            <button id="birthNegative" class="btn btn-danger">No</button>
-            <button id="birthPositive" class="btn btn-success">Yes</button>
+            <h3>Have any mice been born?</h3>
+            <div class="row">
+              <button id="birthNegative" class="btn btn-danger col-lg-4 offset-lg-1">NO</button>
+              <button id="birthPositive" class="btn btn-success col-lg-4 offset-lg-1">YES</button>
+            </div>
           </form>
         </div>
       </div>
     </div>
+		<!-- copyright -->
+		<div class="colorlibcopy-agile">
+			<p>© 2019 DigiBP Team TICINO</p>
+		</div>
+		<!-- //copyright -->
+		<ul class="colorlib-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+  <!-- //main -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="../assets/js/app.js"></script>
+    <script type="text/javascript">
+      $(document).ready(() => {
+        var url = new URL(window.location.href);
+        var processInstance = url.searchParams.get("processInstance");
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="../assets/js/app.js"></script>
+        $.ajax({
+          type: "GET",
+          url: "/rest/engine/default/process-instance/" + processInstance + "/variables",
+          success: function (data, textStatus, response) {
+            $('#projectInfo').html(
+              'Project-Id: ' + data.projectId.value + '<br>'
+              + 'Background: ' + data.background.value + '<br>'
+              + 'Type: ' + data.projectType.value + '<br>'
+              + 'Reagent: ' + data.reagent.value + '<br>'
+              + 'Sequence: ' + data.sequence.value
+            );
+
+            $('#customerInfo').html(
+              data.firstname.value + ' ' + data.lastname.value + '<br>'
+              + data.address.value + '<br>'
+              + data.zip.value + ' ' + data.place.value + '<br>'
+              + data.email.value + '<br>'
+              + 'Institution: ' + data.institution.value
+            );
+          }
+        });
+
+        $('#birthPositive').click(function() {
+          $('#birth').val(true);
+        });
+
+        $('#birthNegative').click(function() {
+            $('#birth').val(false);
+        });
+
+        $("#birthCheckForm").submit(function (event) {
+          event.preventDefault();
+          var url = new URL(window.location.href);
+          $('#taskId').val(url.searchParams.get("taskId"));
+          $.ajax({
+            type: "POST",
+            processData: false,
+            contentType: false,
+            url: "/birth-check",
+            data: new FormData(this),
+            success: function (data, textStatus, response) {
+              $('#modal-title').html('Update Successful');
+              //$('#modal-content').html('!');
+              $('#order-response').modal();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+              $('#modal-title').html('Something went wrong');
+              $('#modal-content').html('Please try again in a few minutes');
+              $('#order-response').modal();
+            }
+          });
+        });
+      })
+    </script>
   </body>
 </html>

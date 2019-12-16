@@ -16,15 +16,12 @@ class MiceOrderedEndpoint {
 
     @PostMapping(path = "/mice-ordered")
     public void postOrder(@ModelAttribute OrderMiceRequest orderMiceRequest) {
-        String taskId = orderMiceRequest.getTaskId();
-        
-        
+        String taskId = orderMiceRequest.getTaskId();        
         processEngine.getTaskService().complete(taskId);
     }
 
     private static class OrderMiceRequest {
         private String taskId;
-        private String bla;
 
         public String getTaskId()
         {
@@ -35,16 +32,5 @@ class MiceOrderedEndpoint {
         {
             this.taskId = taskId;
         }
-
-        public String getBla()
-        {
-            return bla;
-        }
-
-        public void setBla( String bla )
-        {
-            this.bla = bla;
-        }
-
     }
 }

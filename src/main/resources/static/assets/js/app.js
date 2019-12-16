@@ -1,8 +1,7 @@
 $(document).ready(function () {
     $("#formPlaceOrder").submit(function (event) {
         event.preventDefault();
-
-        if( jQuery('#formPlaceOrder input[type=checkbox][name=reagents]:checked').length > 0 )
+        if( formValid() )
         {
             $.ajax({
                 type: "POST",
@@ -22,181 +21,49 @@ $(document).ready(function () {
                 }
             });
         }
-        else
-        {
-            alert('Nope');
-        }
     });
 });
 
-$(document).ready(function () {
-    $("#formMicePlanned").submit(function (event) {
-        event.preventDefault();
-        
-        var url = new URL(window.location.href);
-        var id = url.searchParams.get("id");
-        $('#taskId').val(id);
-        $.ajax({
-            type: "POST",
-            processData: false,
-            contentType: false,
-            url: "/mice-planned",
-            data: new FormData(this),
-            success: function (data, textStatus, response) {
-                //$('#orderSuccess').removeClass("d-none");
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                //alert('meh');
-            }
-        });
-    });
-});
+function formValid()
+{
+    var returnValue = true;
+    if( $('#projectType').val() == 0 ) 
+    {
+        $('#projectType').css( "border-color", "red" );
+        returnValue = false;
+    }
+    else
+    {
+        $('#projectType').css( "border-color", "" );
+    } 
+    if ( $('#background').val() == 0 ) 
+    {
+        $('#background').css( "border-color", "red" );
+        returnValue = false;
+    }
+    else
+    {
+        $('#background').css( "border-color", "" );
+    }
+    if( $('#reagent').val() == 0 ) 
+    {
+        $('#reagent').css( "border-color", "red" );
+        returnValue = false;
+    }
+    else
+    {
+        $('#reagent').css( "border-color", "" );
+    }
 
-$(document).ready(function () {
-    $("#formMiceOrdered").submit(function (event) {
-        event.preventDefault();
-        
-        var url = new URL(window.location.href);
-        var id = url.searchParams.get("id");
-        $('#taskId').val(id);
-        $.ajax({
-            type: "POST",
-            processData: false,
-            contentType: false,
-            url: "/mice-ordered",
-            data: new FormData(this),
-            success: function (data, textStatus, response) {
-                //$('#orderSuccess').removeClass("d-none");
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                //alert('meh');
-            }
-        });
-    });
-});
+    if( isNaN( $('#zip').val() ) )
+    {
+        $('#zip').css( "border-color", "red" );
+        returnValue = false;
+    }
+    else
+    {
+        $('#zip').css( "border-color", "" );
+    }
 
-$(document).ready(function () {
-    $("#formInjectionData").submit(function (event) {
-        event.preventDefault();
-        
-        var url = new URL(window.location.href);
-        var id = url.searchParams.get("id");
-        var method = url.searchParams.get("method");
-        $('#taskId').val(id);
-        $.ajax({
-            type: method,
-            processData: false,
-            contentType: false,
-            url: "/injection-data",
-            data: new FormData(this),
-            success: function (data, textStatus, response) {
-                //$('#orderSuccess').removeClass("d-none");
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                //alert('meh');
-            }
-        });
-    });
-});
-
-$(document).ready(function () {
-    $('#birthPositive').click(function() {
-        $('#birth').val(true);
-    });
-
-    $('#birthNegative').click(function() {
-        $('#birth').val(false);
-    });
-
-    $("#birthCheckForm").submit(function (event) {
-        
-        event.preventDefault();
-        var url = new URL(window.location.href);
-        var id = url.searchParams.get("id");
-        $('#taskId').val(id);
-        $.ajax({
-            type: "POST",
-            processData: false,
-            contentType: false,
-            url: "/birth-check",
-            data: new FormData(this),
-            success: function (data, textStatus, response) {
-                //$('#orderSuccess').removeClass("d-none");
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                //alert('meh');
-            }
-        });
-    });
-
-    $("#formBirthRecord").submit(function (event) {
-        
-        event.preventDefault();
-        var url = new URL(window.location.href);
-        var id = url.searchParams.get("id");
-        $('#taskId').val(id);
-        $.ajax({
-            type: "POST",
-            processData: false,
-            contentType: false,
-            url: "/record-birth",
-            data: new FormData(this),
-            success: function (data, textStatus, response) {
-                //$('#orderSuccess').removeClass("d-none");
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                //alert('meh');
-            }
-        });
-    });
-
-    $("#formSampleRecord").submit(function (event) {
-        
-        event.preventDefault();
-        var url = new URL(window.location.href);
-        var id = url.searchParams.get("id");
-        $('#taskId').val(id);
-        $.ajax({
-            type: "POST",
-            processData: false,
-            contentType: false,
-            url: "/record-samples",
-            data: new FormData(this),
-            success: function (data, textStatus, response) {
-                //$('#orderSuccess').removeClass("d-none");
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                //alert('meh');
-            }
-        });
-    });
-
-    $('#samplePositive').click(function() {
-        $('#sampleResult').val(true);
-    });
-
-    $('#sampleNegative').click(function() {
-        $('#sampleResult').val(false);
-    });
-
-    $("#sampleConfirmForm").submit(function (event) {
-        
-        event.preventDefault();
-        var url = new URL(window.location.href);
-        var id = url.searchParams.get("id");
-        $('#taskId').val(id);
-        $.ajax({
-            type: "POST",
-            processData: false,
-            contentType: false,
-            url: "/confirm-samples",
-            data: new FormData(this),
-            success: function (data, textStatus, response) {
-                //$('#orderSuccess').removeClass("d-none");
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                //alert('meh');
-            }
-        });
-    });
-});
+    return returnValue;
+}

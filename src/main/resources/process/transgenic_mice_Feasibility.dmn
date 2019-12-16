@@ -7,7 +7,7 @@
     <decisionTable id="decisionTable_1">
       <input id="input_1" label="Internal / External">
         <inputExpression id="inputExpression_1" typeRef="string" expressionLanguage="">
-          <text>projectSource</text>
+          <text>isProjectInternal</text>
         </inputExpression>
         <inputValues id="UnaryTests_1grptkx">
           <text>"Internal","External"</text>
@@ -21,13 +21,28 @@
           <text>"Knock-In","Knock-Out","Transgenic","Cryopreservation"</text>
         </inputValues>
       </input>
-      <input id="InputClause_1ye9m8e" label="Target Background">
+      <input id="InputClause_1ye9m8e" label="Background">
         <inputExpression id="LiteralExpression_08zvq7f" typeRef="string">
-          <text>targetBackground</text>
+          <text>background</text>
         </inputExpression>
         <inputValues id="UnaryTests_17zwfl2">
           <text>"C57Bl/6j","FVB","Balb/c","other"</text>
         </inputValues>
+      </input>
+      <input id="InputClause_0amvua1">
+        <inputExpression id="LiteralExpression_0lo0e8f" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0a1jcdg">
+        <inputExpression id="LiteralExpression_1f6liz1" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0dmy08y">
+        <inputExpression id="LiteralExpression_00nvqm1" typeRef="string">
+          <text></text>
+        </inputExpression>
       </input>
       <output id="output_1" label="Feasibility" name="Feasibility" typeRef="string">
         <outputValues id="UnaryTests_13n133g">
@@ -44,6 +59,15 @@
         <inputEntry id="UnaryTests_0dnm4em">
           <text>"C57BL/6j","FVB"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0u87nt5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wwiv1i">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0j3466i">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_12yenob">
           <text>"Possible"</text>
         </outputEntry>
@@ -56,6 +80,15 @@
           <text>"Knock-In"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1o8ma14">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0v1kswy">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16zq1vp">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fjznvr">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1swdy5k">
@@ -72,6 +105,15 @@
         <inputEntry id="UnaryTests_0fl0zb3">
           <text>"C57BL/6j","FVB","Balb/c"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_0yeo6kr">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vpcyr4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dzh2bo">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1ozgw25">
           <text>"Needs to be reviewed"</text>
         </outputEntry>
@@ -84,6 +126,15 @@
           <text>"Cryopreservation"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0gb1ewl">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rooi3i">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zabq4m">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_173rx2g">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1yhakkb">
@@ -100,6 +151,15 @@
         <inputEntry id="UnaryTests_1olpmkj">
           <text>"Balb/c","other"</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_108o4bb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mjraje">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0d47m38">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1hmvnru">
           <text>"Needs to be reviewed"</text>
         </outputEntry>
@@ -113,6 +173,15 @@
         </inputEntry>
         <inputEntry id="UnaryTests_1iji61f">
           <text>"other"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19ltmif">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1r612ru">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fgdzrh">
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1qqn486">
           <text>"Not Possible"</text>

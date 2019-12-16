@@ -9,23 +9,30 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = "/")
-class MicePlannedEndpoint {
+class ProjectFeasibilityEndpoint {
 
     @Autowired
     private ProcessEngine processEngine;
 
-    @PostMapping(path = "/mice-planned")
-    public void postOrder(@ModelAttribute PlanMiceRequest planMiceRequest) {
-        //Map<String, Object> processVars = new HashMap<>();
-        String taskId = planMiceRequest.getTaskId();
-        
+    @PostMapping(path = "/project-feasibility")
+    public void postOrder(@ModelAttribute ProjectFeasiblityRequest projectFeasibilityRequest) {
+        String taskId = projectFeasibilityRequest.getTaskId();
+
+        if( projectFeasibilityRequest.getFeasibility() )
+        {
+            processEngine.getTaskService().setVariable(taskId, "feasibility", "Possible");
+        }
+        else
+        {
+            processEngine.getTaskService().setVariable(taskId, "feasibility", "Not Possible");
+        }
         
         processEngine.getTaskService().complete(taskId);
     }
 
-    private static class PlanMiceRequest {
+    private static class ProjectFeasiblityRequest {
         private String taskId;
-        private String bla;
+        private boolean feasibility;
 
         public String getTaskId()
         {
@@ -37,15 +44,14 @@ class MicePlannedEndpoint {
             this.taskId = taskId;
         }
 
-        public String getBla()
+        public boolean getFeasibility()
         {
-            return bla;
+            return feasibility;
         }
 
-        public void setBla( String bla )
+        public void setFeasibility( boolean feasibility )
         {
-            this.bla = bla;
+            this.feasibility = feasibility;
         }
-
     }
 }

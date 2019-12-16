@@ -27,12 +27,23 @@ class BirthCheckEndpoint {
     @PostMapping(path = "/record-birth")
     public void postBirthRecords(@ModelAttribute BirthCheckRequest birthCheckRequest) {
         String taskId = birthCheckRequest.getTaskId();
+
+        String processInstance = birthCheckRequest.getProcessInstance();
+        
+        processEngine.getRuntimeService().setVariable(processInstance, "maleBirths", birthCheckRequest.getMaleBirths());
+        processEngine.getRuntimeService().setVariable(processInstance, "femaleBirths", birthCheckRequest.getFemaleBirths());
+        processEngine.getRuntimeService().setVariable(processInstance, "birthdate", birthCheckRequest.getBirthdate());
+
         processEngine.getTaskService().complete(taskId);
     }
 
     private static class BirthCheckRequest {
         private String taskId;
+        private String processInstance;
         private boolean birth;
+        private int maleBirths;
+        private int femaleBirths;
+        private String birthdate;
 
         public String getTaskId()
         {
@@ -44,6 +55,16 @@ class BirthCheckEndpoint {
             this.taskId = taskId;
         }
 
+        public String getProcessInstance()
+        {
+            return processInstance;
+        }
+
+        public void setProcessInstance( String processInstance )
+        {
+            this.processInstance = processInstance;
+        }
+
         public boolean getBirth()
         {
             return birth;
@@ -52,6 +73,36 @@ class BirthCheckEndpoint {
         public void setBirth( boolean birth )
         {
             this.birth = birth;
+        }
+
+        public int getMaleBirths()
+        {
+            return maleBirths;
+        }
+
+        public void setMaleBirths( int maleBirths )
+        {
+            this.maleBirths = maleBirths;
+        }
+
+        public int getFemaleBirths()
+        {
+            return femaleBirths;
+        }
+
+        public void setFemaleBirths( int femaleBirths )
+        {
+            this.femaleBirths = femaleBirths;
+        }
+
+        public String getBirthdate()
+        {
+            return birthdate;
+        }
+
+        public void setBirthdate( String birthdate )
+        {
+            this.birthdate = birthdate;
         }
     }
 }

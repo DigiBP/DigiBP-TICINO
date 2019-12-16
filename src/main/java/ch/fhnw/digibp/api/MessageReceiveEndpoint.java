@@ -18,23 +18,23 @@ class MessageReceiveEndpoint {
     @PostMapping(path = "/confirm-samples")
     public void postOrder(@ModelAttribute MessageRequest messageRequest) {
         MessageCorrelationResult result = processEngine.getRuntimeService().createMessageCorrelation("transgenic_mice_feedback_received")
-            .processInstanceId(messageRequest.getTaskId())
+            .processInstanceId(messageRequest.getProcessInstance())
             .setVariable("samplesOk", messageRequest.getSampleResult())
             .correlateWithResult();
     }
 
     private static class MessageRequest {
-        private String taskId;
+        private String processInstance;
         private boolean sampleResult;
 
-        public String getTaskId()
+        public String getProcessInstance()
         {
-            return taskId;
+            return processInstance;
         }
 
-        public void setTaskId( String taskId )
+        public void setProcessInstance( String processInstance )
         {
-            this.taskId = taskId;
+            this.processInstance = processInstance;
         }
 
         public boolean getSampleResult()
