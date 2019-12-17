@@ -15,7 +15,7 @@ class ProjectFeasibilityEndpoint {
     private ProcessEngine processEngine;
 
     @PostMapping(path = "/project-feasibility")
-    public void postOrder(@ModelAttribute ProjectFeasiblityRequest projectFeasibilityRequest) {
+    public void postProjectFeasibility(@ModelAttribute ProjectFeasiblityRequest projectFeasibilityRequest) {
         String taskId = projectFeasibilityRequest.getTaskId();
 
         if( projectFeasibilityRequest.getFeasibility() )

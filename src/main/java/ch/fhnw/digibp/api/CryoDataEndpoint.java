@@ -20,7 +20,7 @@ class CryoDataEndpoint {
     private ProcessEngine processEngine;
 
     @PostMapping(path = "/cryo-data")
-    public void postOrder(@ModelAttribute CryoDataRequest cryoDataRequest) {
+    public void postCryoData(@ModelAttribute CryoDataRequest cryoDataRequest) {
         String taskId = cryoDataRequest.getTaskId();
         String processInstance = cryoDataRequest.getProcessInstance();
 

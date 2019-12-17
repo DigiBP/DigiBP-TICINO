@@ -20,7 +20,7 @@ class SampleEndpoint {
     private ProcessEngine processEngine;
 
     @PostMapping(path = "/record-samples")
-    public void postOrder(@ModelAttribute SampleRequest sampleRequest) {
+    public void postSampleData(@ModelAttribute SampleRequest sampleRequest) {
         String taskId = sampleRequest.getTaskId();
         String processInstance = sampleRequest.getProcessInstance();
         Map<Integer, List<Integer>> sampleData = new HashMap<>();

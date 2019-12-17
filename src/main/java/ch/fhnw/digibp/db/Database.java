@@ -1,14 +1,11 @@
 package ch.fhnw.digibp.db;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -20,13 +17,8 @@ import com.zaxxer.hikari.HikariDataSource;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import ch.fhnw.digibp.config.yaml.DatabaseProperties;
-
 @Named
 public class Database {
-
-    @Autowired
-	private DatabaseProperties dbProperties;
 
     @Autowired
     private HikariDataSource dataSource;
