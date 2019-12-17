@@ -246,10 +246,9 @@
 	"rack": rack,
 	"box": box,
 	"position": position,
-	"strain": strain
+	"project_id": projectId
 });</camunda:script>
               </camunda:inputParameter>
-              <camunda:outputParameter name="qr_code" />
             </camunda:inputOutput>
             <camunda:connectorId>http-connector</camunda:connectorId>
           </camunda:connector>
