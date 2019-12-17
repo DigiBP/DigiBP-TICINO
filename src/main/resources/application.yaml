@@ -16,9 +16,7 @@ spring:
     username: g65mtwvif31z21d8
     password: qjeu52xomwxxzd6o
     max-active: 2
-
-database:
-  connection: jdbc:mysql://g65mtwvif31z21d8:h30tstvleaybl3hd@n7qmaptgs6baip9z.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/sd104zmnv09fsqm0
+    driver-class-name: com.mysql.jdbc.Driver
 
 mail:
   server: smtp.mailtrap.io
