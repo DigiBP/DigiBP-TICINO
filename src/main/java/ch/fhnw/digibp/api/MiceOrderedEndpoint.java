@@ -15,7 +15,7 @@ class MiceOrderedEndpoint {
     private ProcessEngine processEngine;
 
     @PostMapping(path = "/mice-ordered")
-    public void postOrder(@ModelAttribute OrderMiceRequest orderMiceRequest) {
+    public void postMiceOrder(@ModelAttribute OrderMiceRequest orderMiceRequest) {
         String taskId = orderMiceRequest.getTaskId();        
         processEngine.getTaskService().complete(taskId);
     }

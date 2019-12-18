@@ -16,7 +16,7 @@ class MessageReceiveEndpoint {
     private ProcessEngine processEngine;
 
     @PostMapping(path = "/confirm-samples")
-    public void postOrder(@ModelAttribute MessageRequest messageRequest) {
+    public void postSampleConfirmation(@ModelAttribute MessageRequest messageRequest) {
         MessageCorrelationResult result = processEngine.getRuntimeService().createMessageCorrelation("transgenic_mice_feedback_received")
             .processInstanceId(messageRequest.getProcessInstance())
             .setVariable("samplesOk", messageRequest.getSampleResult())

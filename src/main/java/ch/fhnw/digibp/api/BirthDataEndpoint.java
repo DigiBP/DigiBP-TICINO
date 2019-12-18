@@ -1,7 +1,5 @@
 package ch.fhnw.digibp.api;
 
-import java.util.concurrent.TimeUnit;
-
 import org.camunda.bpm.engine.ProcessEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,7 +15,7 @@ class BirthCheckEndpoint {
     private ProcessEngine processEngine;
 
     @PostMapping(path = "/birth-check")
-    public void postOrder(@ModelAttribute BirthCheckRequest birthCheckRequest) {
+    public void postBirthCheck(@ModelAttribute BirthCheckRequest birthCheckRequest) {
         String taskId = birthCheckRequest.getTaskId();
 
         processEngine.getTaskService().setVariable(taskId, "births", birthCheckRequest.getBirth());

@@ -1,8 +1,5 @@
 package ch.fhnw.digibp.api;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.camunda.bpm.engine.ProcessEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,7 +16,7 @@ class InjectionDataEndpoint {
     private ProcessEngine processEngine;
 
     @PostMapping(path = "/injection-data")
-    public void postOrder(@ModelAttribute InjectionDataRequest injectionDataRequest) {
+    public void postInjectionData(@ModelAttribute InjectionDataRequest injectionDataRequest) {
         String taskId = injectionDataRequest.getTaskId();
         String processInstance = injectionDataRequest.getProcessInstance();
         
